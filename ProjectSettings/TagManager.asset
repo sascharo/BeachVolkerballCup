@@ -9,18 +9,18 @@ TagManager:
   - ball
   - agent0
   - agentFront0
-  - agentRight0
-  - agentLeft0
-  - agentBack0
   - agent1
   - agentFront1
-  - agentRight1
-  - agentLeft1
-  - agentBack1
   - wall
-  - agentTop0
-  - agentTop1
   - floor
+  - agentRayFront0
+  - agentRayFront1
+  - agentRayRight0
+  - agentRayRight1
+  - agentRayLeft0
+  - agentRayLeft1
+  - agentRayBack0
+  - agentRayBack1
   layers:
   - Default
   - TransparentFX
@@ -32,8 +32,8 @@ TagManager:
   - 
   - 
   - 
-  - agent
-  - ball
+  - RayPerceptionSensorAgents
+  - 
   - 
   - 
   - 
