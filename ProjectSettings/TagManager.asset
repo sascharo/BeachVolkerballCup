@@ -21,6 +21,7 @@ TagManager:
   - agentRayLeft1
   - agentRayBack0
   - agentRayBack1
+  - cam
   layers:
   - Default
   - TransparentFX
@@ -31,7 +32,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Camera
   - RayPerceptionSensorAgents
   - 
   - 

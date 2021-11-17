@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using Unity.MLAgents;
 
@@ -29,6 +30,20 @@ public class BeachVolkerballCupController : MonoBehaviour
         [Range(-1, 3)]
         public int player = -1;
         public float timeStamp = 0f;
+        
+        public void Set(int te, int pl, float ts)
+        {
+            team = te;
+            player = pl;
+            timeStamp = ts;
+        }
+        
+        public void Reset()
+        {
+            team = -1;
+            player = -1;
+            timeStamp = 0f;
+        }
     }
     
     [Serializable]
@@ -39,6 +54,20 @@ public class BeachVolkerballCupController : MonoBehaviour
         [Range(-1, 3)]
         public int player = -1;
         public float timeStamp = 0f;
+
+        public void Set(CarryInfo ci, float ts)
+        {
+            team = ci.team;
+            player = ci.player;
+            timeStamp = ts;
+        }
+        
+        public void Reset()
+        {
+            team = -1;
+            player = -1;
+            timeStamp = 0f;
+        }
     }
 
     public enum SceneMode
@@ -75,9 +104,16 @@ public class BeachVolkerballCupController : MonoBehaviour
     [HideInInspector]
     public GameObject ballGO;
     public BeachVolkerballCupBall ball;
-    //private Rigidbody _ballRb;
-    public CarryInfo carryInfo = new CarryInfo();
-    public ThrowInfo throwInfo = new ThrowInfo();
+    //[HideInInspector]
+    public CarryInfo carryInfo;
+    //[HideInInspector]
+    public ThrowInfo throwInfo;
+    [Range(0f, 100f)]
+    public float ballThrowTimeout = 2f;
+    [Range(0f, 1f)]
+    public float ballMagnitudeThreshold = 0.005f;
+    [Range(0f, 100f)]
+    public float ballActiveTimeoutInSec = 25f;
     
     [Header("BALL PROJECTILE")]
     [Range(90f, 90f)]
@@ -95,6 +131,9 @@ public class BeachVolkerballCupController : MonoBehaviour
         };
 
         Initialize();
+        
+    carryInfo = new CarryInfo();
+    throwInfo = new ThrowInfo();
     }
 
     private void Initialize()
@@ -131,7 +170,6 @@ public class BeachVolkerballCupController : MonoBehaviour
 
     void ResetScene()
     {
-        //Debug.Log("Reset Time.");
         resetCounter = 0;
 
         int tIndex = 0;
@@ -147,6 +185,9 @@ public class BeachVolkerballCupController : MonoBehaviour
             
             tIndex += 1;
         }
+        
+        carryInfo.Reset();
+        throwInfo.Reset();
         
         ball.Reset();
     }
@@ -186,25 +227,15 @@ public class BeachVolkerballCupController : MonoBehaviour
             }
             _agentInfos[carryInfo.team][carryInfo.player].position = position;
         }
-    }
-    
-    public void ThrowBallTimeout()
-    {
-        throwInfo.team = -1;
-        throwInfo.player = -1;
-        throwInfo.timeStamp = 0f;
-    }
+    } 
     
     public void CaughtBall(int teamID, int playerID)
     {
-        var teamOther = 1 - teamID;
-        Debug.Log($"Team {teamID} caught the ball, team {teamOther} didn't.");
-        _simpleMultiAgentGroups[teamID].AddGroupReward(2f);
-        _simpleMultiAgentGroups[teamOther].AddGroupReward(-4f);
+        Debug.Log($"Team {teamID} caught the ball, team {1 - teamID} didn't.");
+        _simpleMultiAgentGroups[teamID].AddGroupReward(1f);
+        _simpleMultiAgentGroups[1 - teamID].AddGroupReward(-1f);
 
-        carryInfo.team = teamID;
-        carryInfo.player = playerID;
-        carryInfo.timeStamp = Time.time;
+        carryInfo.Set(teamID, playerID, Time.time);
         ball.Hold(_agentInfos[carryInfo.team][carryInfo.player].agentGO.transform);
         
         _agentInfos[carryInfo.team][carryInfo.player].eulerAngles = _agentInfos[carryInfo.team][carryInfo.player].agentGO.transform.rotation.eulerAngles;
@@ -213,9 +244,7 @@ public class BeachVolkerballCupController : MonoBehaviour
 
     public void ThrowBall(Transform playerTransform, Transform projectileTransform)
     {
-        throwInfo.team = carryInfo.team;
-        throwInfo.player = carryInfo.player;
-        throwInfo.timeStamp = Time.time;
+        throwInfo.Set(carryInfo, Time.time);
         
         ball.rigidBody.velocity = Vector3.zero;
         ball.rigidBody.angularVelocity = Vector3.zero;
@@ -223,19 +252,17 @@ public class BeachVolkerballCupController : MonoBehaviour
         ball.rigidBody.AddForce(projectileTransform.forward * projectileForce, projectileForceMode);
         
         Debug.Log($"Team {throwInfo.team} throws ball.");
-        _simpleMultiAgentGroups[throwInfo.team].AddGroupReward(0.75f);
-        
-        carryInfo.team = -1;
-        carryInfo.player = -1;
-        carryInfo.timeStamp = 0f;
+//        _simpleMultiAgentGroups[throwInfo.team].AddGroupReward(0.75f);
+
+        carryInfo.Reset();
     }
 
     public void HitByOpponent(int teamID, int playerID)
     {
         Debug.Log($"Team {teamID} hit by team {throwInfo.team}.");
-        _simpleMultiAgentGroups[throwInfo.team].AddGroupReward(1f);
-        _agentInfos[throwInfo.team][throwInfo.player].agent.AddReward(1f);
-        _simpleMultiAgentGroups[teamID].AddGroupReward(-1f);
+//        _simpleMultiAgentGroups[throwInfo.team].AddGroupReward(1f);
+//        _agentInfos[throwInfo.team][throwInfo.player].agent.AddReward(1f);
+//        _simpleMultiAgentGroups[teamID].AddGroupReward(-1f);
         
         _agentInfos[teamID][playerID].agent.gameObject.SetActive(false);
 
@@ -243,9 +270,9 @@ public class BeachVolkerballCupController : MonoBehaviour
         //Debug.Log($"Team {teamID}: {playersRemaining[teamID]}");
         if (playersRemaining[teamID] <= 0)
         {
-            Debug.Log($"Team {throwInfo.team} wins!.");
-            _simpleMultiAgentGroups[throwInfo.team].AddGroupReward(10f);
-            _simpleMultiAgentGroups[teamID].AddGroupReward(-5f);
+            Debug.Log($"Team {throwInfo.team} wins!");
+            _simpleMultiAgentGroups[throwInfo.team].AddGroupReward(2f);
+            _simpleMultiAgentGroups[teamID].AddGroupReward(-1f);
             
             foreach (var group in _simpleMultiAgentGroups)
             {
@@ -258,7 +285,19 @@ public class BeachVolkerballCupController : MonoBehaviour
     public void HitByTeamplayer(int teamID)
     {
         Debug.Log($"Team {teamID} hit by own team.");
-        _simpleMultiAgentGroups[teamID].AddGroupReward(-2.5f);
+        _simpleMultiAgentGroups[teamID].AddGroupReward(-1f);
+    }
+
+    public void BallInactive()
+    {
+        int i = 0;
+        foreach (var group in _simpleMultiAgentGroups)
+        {
+            _simpleMultiAgentGroups[i].AddGroupReward(-1f);
+            group.GroupEpisodeInterrupted();
+            i += 1;
+        }
+        ResetScene();
     }
 }
 

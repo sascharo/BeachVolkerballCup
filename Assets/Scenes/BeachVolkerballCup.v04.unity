@@ -123,91 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &48543893
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5206633799694224828, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206633799893840370, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206633800132059103, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760451021809, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: angularVelocityStrength
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Name
-      value: BeachVolkerballCupEnv (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549037, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: ballSpwanRadius
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7744085258142907749, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 56420d296826d5041888969f6cc1de85, type: 3}
 --- !u!1 &153045707
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,181 +156,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &161991116
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5206633799694224828, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206633799893840370, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206633800132059103, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760451021809, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: angularVelocityStrength
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Name
-      value: BeachVolkerballCupEnv (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_RootOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -140
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549037, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: ballSpwanRadius
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7744085258142907749, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 56420d296826d5041888969f6cc1de85, type: 3}
---- !u!1001 &289543378
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5206633799694224828, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206633799893840370, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206633800132059103, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760451021809, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: angularVelocityStrength
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Name
-      value: BeachVolkerballCupEnv (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -60
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549037, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: ballSpwanRadius
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7744085258142907749, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 56420d296826d5041888969f6cc1de85, type: 3}
---- !u!135 &293910902 stripped
-SphereCollider:
-  m_CorrespondingSourceObject: {fileID: 5954752761006171126, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-  m_PrefabInstance: {fileID: 5954752761265920640}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &318490716
 GameObject:
   m_ObjectHideFlags: 1
@@ -514,176 +254,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &635056799
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5206633799694224828, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206633799893840370, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206633800132059103, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760451021809, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: angularVelocityStrength
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Name
-      value: BeachVolkerballCupEnv (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -80
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549037, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: ballSpwanRadius
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7744085258142907749, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 56420d296826d5041888969f6cc1de85, type: 3}
---- !u!1001 &803658879
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5206633799694224828, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206633799893840370, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206633800132059103, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760451021809, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: angularVelocityStrength
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Name
-      value: BeachVolkerballCupEnv (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -40
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549037, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: ballSpwanRadius
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7744085258142907749, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 56420d296826d5041888969f6cc1de85, type: 3}
 --- !u!1 &1009000883
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,91 +373,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009000883}
   m_Enabled: 1
---- !u!1001 &1096650328
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5206633799694224828, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206633799893840370, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206633800132059103, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760451021809, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: angularVelocityStrength
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Name
-      value: BeachVolkerballCupEnv (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549037, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: ballSpwanRadius
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7744085258142907749, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 56420d296826d5041888969f6cc1de85, type: 3}
 --- !u!1 &1130676693
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,6 +537,11 @@ MonoBehaviour:
   moveInput: {x: 0, y: 0}
   rotateInput: 0
   throwPressed: 0
+--- !u!135 &1748429028 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 5954752761006171126, guid: 56420d296826d5041888969f6cc1de85, type: 3}
+  m_PrefabInstance: {fileID: 5954752761265920640}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1903717484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,7 +554,7 @@ GameObject:
   - component: {fileID: 1903717485}
   - component: {fileID: 1903717488}
   - component: {fileID: 1903717487}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerCMVcam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1138,10 +628,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ConfineMode: 1
-  m_BoundingVolume: {fileID: 293910902}
+  m_BoundingVolume: {fileID: 1748429028}
   m_BoundingShape2D: {fileID: 0}
   m_ConfineScreenEdges: 1
-  m_Damping: 0
+  m_Damping: 2.5
 --- !u!114 &1903717488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1165,261 +655,6 @@ MonoBehaviour:
     m_FrequencyGain: 1
     m_Duration: 1
     m_NoiseOffsets: {x: 0, y: 0, z: 0}
---- !u!1001 &1931386811
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5206633799694224828, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206633799893840370, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206633800132059103, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760451021809, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: angularVelocityStrength
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Name
-      value: BeachVolkerballCupEnv (9)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -180
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549037, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: ballSpwanRadius
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7744085258142907749, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 56420d296826d5041888969f6cc1de85, type: 3}
---- !u!1001 &1989539386
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5206633799694224828, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206633799893840370, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206633800132059103, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760451021809, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: angularVelocityStrength
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Name
-      value: BeachVolkerballCupEnv (8)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_RootOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -160
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549037, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: ballSpwanRadius
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7744085258142907749, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 56420d296826d5041888969f6cc1de85, type: 3}
---- !u!1001 &2035869765
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5206633799694224828, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206633799893840370, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5206633800132059103, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760451021809, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: angularVelocityStrength
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Name
-      value: BeachVolkerballCupEnv (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -120
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954752760944549037, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: ballSpwanRadius
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7744085258142907749, guid: 56420d296826d5041888969f6cc1de85, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 56420d296826d5041888969f6cc1de85, type: 3}
 --- !u!1 &2055766232
 GameObject:
   m_ObjectHideFlags: 3
@@ -1432,7 +667,7 @@ GameObject:
   - component: {fileID: 2055766236}
   - component: {fileID: 2055766235}
   - component: {fileID: 2055766234}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1977,7 +1212,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.2
+    m_Strength: 0.4
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -2025,6 +1260,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5954752760451021809, guid: 56420d296826d5041888969f6cc1de85, type: 3}
+      propertyPath: threshold
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5954752760451021809, guid: 56420d296826d5041888969f6cc1de85, type: 3}
       propertyPath: angularVelocityStrength
       value: 2
@@ -2076,6 +1315,10 @@ PrefabInstance:
     - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954752760944549037, guid: 56420d296826d5041888969f6cc1de85, type: 3}
+      propertyPath: ballTimeout
+      value: 1.01
       objectReference: {fileID: 0}
     - target: {fileID: 5954752760944549037, guid: 56420d296826d5041888969f6cc1de85, type: 3}
       propertyPath: ballSpwanRadius

@@ -1,6 +1,5 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations;
 using Random = UnityEngine.Random;
 
 public class BeachVolkerballCupBall : MonoBehaviour
@@ -11,10 +10,19 @@ public class BeachVolkerballCupBall : MonoBehaviour
     //private Quaternion _restRot;
     private Vector3 _posDelta;
     
+    [Header("RIGID BODY")]
     [HideInInspector]
     public Rigidbody rigidBody;
-
+    public Vector2 initialVelocityStrength = new Vector2(0.75f, 7.5f);
     public Vector2 initialAngularVelocityStrength = new Vector2(1f, 2.5f);
+    private float timer = 0;
+    //[HideInInspector]
+    public bool inactive = false;
+
+    [Header("DEBUG")]
+    public Material materialCarry;
+    public Material materialThrow;
+    private Material materialDefault;
 
     void Awake()
     {
@@ -22,12 +30,27 @@ public class BeachVolkerballCupBall : MonoBehaviour
         _controller = GetComponentInParent<BeachVolkerballCupController>();
         
         SetRestPosition(transform);
+
+        materialDefault = GetComponent<Renderer>().material;
     }
-    
-    /*private void OnEnable()
+
+    private void Update()
     {
+        if (rigidBody.velocity.magnitude < _controller.ballMagnitudeThreshold)
+        {
+            timer += Time.deltaTime;
+        }
+        if (timer > _controller.ballActiveTimeoutInSec)
+        {
+            inactive = true;
+            _controller.BallInactive();
+        }
         
-    }*/
+        /*if (Time.time - _controller.throwInfo.timeStamp >= _controller.ballThrowTimeout)
+        {
+            _controller.ball.SetMaterialDefault();
+        }*/
+    }
 
     private void SetRestPosition(Transform tr)
     {
@@ -44,12 +67,17 @@ public class BeachVolkerballCupBall : MonoBehaviour
         SetRestPosition(tr);
 
         InitRb();
+
+        SetMaterialDefault();
     }
     
     public void InitRb()
     {
+        inactive = false;
+        timer = 0f;
+
         //rigidBody.velocity = Vector3.zero;
-        rigidBody.velocity = 0.1f * Random.onUnitSphere;
+        rigidBody.velocity = Random.Range(initialVelocityStrength.x, initialVelocityStrength.y) * Random.onUnitSphere;
         //rigidBody.angularVelocity = Vector3.zero;
         rigidBody.angularVelocity = Random.Range(initialAngularVelocityStrength.x, initialAngularVelocityStrength.y) * Random.onUnitSphere;
         //rigidBody.AddForce(projectileTransform.forward * projectileForce, projectileForceMode);
@@ -91,13 +119,31 @@ public class BeachVolkerballCupBall : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (_controller.throwInfo.team >= 0)
+        if (_controller.throwInfo.team > -1)
         {
-            if (collision.gameObject.CompareTag("floor") && Time.time - _controller.throwInfo.timeStamp >= 1f)
+            if ((collision.gameObject.CompareTag("barrier")) || 
+                (collision.gameObject.CompareTag("floor") && Time.time - _controller.throwInfo.timeStamp >= _controller.ballThrowTimeout))
             {
                 //Debug.Log(Time.time);
-                _controller.ThrowBallTimeout();
+                _controller.throwInfo.Reset();
+                
+                //_controller.ball.SetMaterialDefault();
             }
         }
+    }
+
+    public void SetMaterialDefault()
+    {
+        GetComponent<Renderer>().material = materialDefault;
+    }
+    
+    public void SetMaterialCarry()
+    {
+        GetComponent<Renderer>().material = materialCarry;
+    }
+    
+    public void SetMaterialThrow()
+    {
+        GetComponent<Renderer>().material = materialThrow;
     }
 }

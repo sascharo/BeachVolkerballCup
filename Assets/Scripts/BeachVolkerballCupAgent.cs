@@ -119,12 +119,15 @@ public class BeachVolkerballCupAgent : Agent
     {
         var tr = transform;
         sensor.AddObservation(tr.localPosition);
+        //sensor.AddObservation(tr.rotation.eulerAngles.y);
+
         var angle = Vector3.SignedAngle(transform.forward, _controller.ball.gameObject.transform.position - tr.position, Vector3.up) / 180f;
         sensor.AddObservation(angle);
+        sensor.AddObservation(hasBall);
+        
         sensor.AddObservation(_controller.ball.gameObject.transform.localPosition);
         //sensor.AddObservation(_controller.ball.gameObject.transform.InverseTransformVector(_controller.ball.rigidBody.velocity));
         sensor.AddObservation(_controller.ball.rigidBody.velocity.magnitude);
-        sensor.AddObservation(hasBall);
     }
 
     public void MoveAgent(ActionBuffers actionBuffers)
@@ -182,48 +185,53 @@ public class BeachVolkerballCupAgent : Agent
             //Debug.Log(thisContact.thisCollider.CompareTag($"agentFront{_behaviorParameters.TeamId}"));
             if (thisContact.thisCollider.CompareTag($"agentFront{_behaviorParameters.TeamId}"))
             {
-                //Debug.Log($"Agent {playerID} (team {_behaviorParameters.TeamId}) caught ball.");
+                _controller.ball.SetMaterialCarry();
+                
+                Debug.Log($"Agent {playerID} of team {_behaviorParameters.TeamId} caught ball.");
                 hasBall = true;
                 //_rigidBody.constraints = RigidbodyConstraints.FreezePosition;
                 _controller.CaughtBall(_behaviorParameters.TeamId, playerID);
-                AddReward(2f);
+                AddReward(1f);
                 //EndEpisode();
             }
             else
             {
+                _controller.ball.SetMaterialDefault();
+                
                 if (_controller.throwInfo.team == -1)
                 {
-                    Debug.Log($"Agent {playerID} (team {_behaviorParameters.TeamId}) touched ball.");
-                    AddReward(-0.01f);
+                    Debug.Log($"Agent {playerID} of team {_behaviorParameters.TeamId} touched ball.");
+//                    AddReward(-0.01f);
                 }
                 else
                 {
                     if (_controller.throwInfo.team != _behaviorParameters.TeamId)
                     {
-                        //Debug.Log("Hit by ball thrown by other team.");
+                        Debug.Log($"Agent {playerID} of team {_behaviorParameters.TeamId} hit by team {_controller.throwInfo.team}.");
                         //AddReward(-1f);
                         _controller.HitByOpponent(_behaviorParameters.TeamId, playerID);
                     }
                     else if (_controller.throwInfo.player != playerID)
                     {
-                        //Debug.Log("Hit by own team.");
+                        Debug.Log($"Agent {playerID} of team {_behaviorParameters.TeamId} hit by own team ({_controller.throwInfo.team}).");
                         //AddReward(-1f);
                         _controller.HitByTeamplayer(_behaviorParameters.TeamId);
                     }
                 }
             }
         }
-        else if (collision.transform.CompareTag("barrier"))
+        /*else if (collision.transform.CompareTag("barrier"))
         {
-            //Debug.Log($"Agent {playerID} of team {teamID} hit barrier.");
-            AddReward(-1f);
-        }
+            Debug.Log($"Agent {playerID} of team {_behaviorParameters.TeamId} hit barrier.");
+        }*/
     }
     
-    public void ThrowBall()
+    private void ThrowBall()
     {
-        //Debug.Log("Throw ball.");
-        AddReward(0.25f);
+        _controller.ball.SetMaterialThrow();
+        
+        Debug.Log($"Agent {playerID} of team {_behaviorParameters.TeamId} throws ball.");
+//        AddReward(0.25f);
         hasBall = false;
         _controller.ThrowBall(transform, projectileTransform);
         //_rigidBody.constraints = _constraints;
