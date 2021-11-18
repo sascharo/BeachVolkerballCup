@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7da8ec5f09a7943955e843da83cb7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneMode: 0
+  sceneMode: 1
   maxEnvironmentSteps: 5000
   resetCounter: 0
   humanTeamID: 0
@@ -192,22 +192,23 @@ MonoBehaviour:
   agentsListTeam0:
   - agentGO: {fileID: 0}
     agent: {fileID: 7744085258142907748}
-    eulerAngles: {x: 0, y: 0, z: 0}
-    position: {x: 0, y: 0, z: 0}
+    carryEulerAngles: {x: 0, y: 0, z: 0}
+    carryPosition: {x: 0, y: 0, z: 0}
   - agentGO: {fileID: 0}
     agent: {fileID: 5206633799893840371}
-    eulerAngles: {x: 0, y: 0, z: 0}
-    position: {x: 0, y: 0, z: 0}
+    carryEulerAngles: {x: 0, y: 0, z: 0}
+    carryPosition: {x: 0, y: 0, z: 0}
   agentsListTeam1:
   - agentGO: {fileID: 0}
     agent: {fileID: 5206633799694224829}
-    eulerAngles: {x: 0, y: 0, z: 0}
-    position: {x: 0, y: 0, z: 0}
+    carryEulerAngles: {x: 0, y: 0, z: 0}
+    carryPosition: {x: 0, y: 0, z: 0}
   - agentGO: {fileID: 0}
     agent: {fileID: 5206633800132059102}
-    eulerAngles: {x: 0, y: 0, z: 0}
-    position: {x: 0, y: 0, z: 0}
+    carryEulerAngles: {x: 0, y: 0, z: 0}
+    carryPosition: {x: 0, y: 0, z: 0}
   playersRemaining: 
+  minThrowDistance: 5
   ballSpawnRadius: 9
   ballGO: {fileID: 0}
   ball: {fileID: 5954752760451021809}
@@ -219,12 +220,13 @@ MonoBehaviour:
     team: -1
     player: -1
     timeStamp: 0
-  ballThrowTimeout: 2
+  ballThrowTimeoutInSec: 0.6666667
   ballMagnitudeThreshold: 0.005
   ballActiveTimeoutInSec: 22.5
-  projectileAngle: -11
-  projectileForce: 44
+  projectileForceScalar: 44
+  projectileForceInputScalar: 1
   projectileForceMode: 2
+  projectileAngularVelocityStrength: {x: 0.001, y: 10}
 --- !u!1 &5954752761006171124
 GameObject:
   m_ObjectHideFlags: 0

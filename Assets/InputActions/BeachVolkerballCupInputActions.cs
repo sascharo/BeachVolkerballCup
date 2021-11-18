@@ -37,34 +37,25 @@ public partial class @BeachVolkerballCupInputActions : IInputActionCollection2, 
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""d2faa0a0-e027-4a5d-a155-870bb0ceaf7c"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""Turn"",
+                    ""type"": ""Value"",
+                    ""id"": ""105cdbd3-2edc-4934-a3ae-ee5b51354121"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Throw"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""cbcb2a57-a474-46a7-b133-cf144f6de321"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Shield"",
-                    ""type"": ""Button"",
-                    ""id"": ""ec97db61-8659-49c6-afaa-20b82a98e72b"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Dash"",
+                    ""name"": ""Boost"",
                     ""type"": ""Button"",
                     ""id"": ""49d5245a-a350-4f94-b4c8-cf578d61000b"",
                     ""expectedControlType"": ""Button"",
@@ -73,25 +64,38 @@ public partial class @BeachVolkerballCupInputActions : IInputActionCollection2, 
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Rotate"",
-                    ""type"": ""Value"",
-                    ""id"": ""7172bb7c-a5ae-46b9-af48-2f521eb69773"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": ""Normalize(min=-50,max=50)"",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Turn"",
-                    ""type"": ""Value"",
-                    ""id"": ""105cdbd3-2edc-4934-a3ae-ee5b51354121"",
-                    ""expectedControlType"": ""Axis"",
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""d2faa0a0-e027-4a5d-a155-870bb0ceaf7c"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""87f0f51b-040d-4784-8b56-218ded9ee1d8"",
+                    ""path"": ""<XInputController>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6fdb596c-c0bb-4f37-b409-c235e9612acf"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": ""StickDeadzone"",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
                 {
                     ""name"": ""2D Vector"",
                     ""id"": ""f7a4010c-91c6-422f-91e7-4b14cbdb214a"",
@@ -149,12 +153,34 @@ public partial class @BeachVolkerballCupInputActions : IInputActionCollection2, 
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6fdb596c-c0bb-4f37-b409-c235e9612acf"",
-                    ""path"": ""<Gamepad>/leftStick"",
+                    ""id"": ""8cb7676d-a99a-4ee9-b5f2-3d5b500650a2"",
+                    ""path"": ""<XInputController>/rightTrigger"",
                     ""interactions"": """",
-                    ""processors"": ""StickDeadzone"",
+                    ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Run"",
+                    ""action"": ""Throw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fe641861-0da7-43ba-8bd6-e95a17232a77"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d564b1bf-ae99-4e51-957d-36245fa36309"",
+                    ""path"": ""<XInputController>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throw"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -182,111 +208,12 @@ public partial class @BeachVolkerballCupInputActions : IInputActionCollection2, 
                 },
                 {
                     ""name"": """",
-                    ""id"": ""fe641861-0da7-43ba-8bd6-e95a17232a77"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""id"": ""737aae32-21a1-4dd6-95cc-caa7ac6db4b3"",
+                    ""path"": ""<XInputController>/rightStick/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Throw"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2ae82452-d746-4a28-86f4-43c469c78eff"",
-                    ""path"": ""<Keyboard>/k"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Throw"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f3b10de9-a5c7-4952-b617-d46c6132d174"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Throw"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d564b1bf-ae99-4e51-957d-36245fa36309"",
-                    ""path"": ""<XInputController>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Throw"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2b94ae52-9bb0-478e-8e4c-bf6c747a5c7d"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shield"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""75b3d327-54da-4b56-a39e-052b1c173b56"",
-                    ""path"": ""<Keyboard>/i"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shield"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""319796b1-6071-46f0-81dc-58b6bdb7d86a"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": ""Press(pressPoint=0.5)"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ae8dc5a5-930d-412e-a196-627e63bfcd0c"",
-                    ""path"": ""<Keyboard>/l"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3eaa9db8-9821-49ea-b640-0434a871fb19"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4e9015a8-9ef1-4f5b-8776-ed1f246ce741"",
-                    ""path"": ""<Pointer>/delta/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Rotate"",
+                    ""action"": ""Turn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -298,6 +225,39 @@ public partial class @BeachVolkerballCupInputActions : IInputActionCollection2, 
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""319796b1-6071-46f0-81dc-58b6bdb7d86a"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": ""Press(pressPoint=0.5)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Boost"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ae8dc5a5-930d-412e-a196-627e63bfcd0c"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Boost"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3eaa9db8-9821-49ea-b640-0434a871fb19"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Boost"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -379,12 +339,10 @@ public partial class @BeachVolkerballCupInputActions : IInputActionCollection2, 
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
-        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_Throw = m_Player.FindAction("Throw", throwIfNotFound: true);
-        m_Player_Shield = m_Player.FindAction("Shield", throwIfNotFound: true);
-        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
-        m_Player_Rotate = m_Player.FindAction("Rotate", throwIfNotFound: true);
         m_Player_Turn = m_Player.FindAction("Turn", throwIfNotFound: true);
+        m_Player_Throw = m_Player.FindAction("Throw", throwIfNotFound: true);
+        m_Player_Boost = m_Player.FindAction("Boost", throwIfNotFound: true);
+        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Controls = m_UI.FindAction("Controls", throwIfNotFound: true);
@@ -449,23 +407,19 @@ public partial class @BeachVolkerballCupInputActions : IInputActionCollection2, 
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Run;
-    private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_Throw;
-    private readonly InputAction m_Player_Shield;
-    private readonly InputAction m_Player_Dash;
-    private readonly InputAction m_Player_Rotate;
     private readonly InputAction m_Player_Turn;
+    private readonly InputAction m_Player_Throw;
+    private readonly InputAction m_Player_Boost;
+    private readonly InputAction m_Player_Jump;
     public struct PlayerActions
     {
         private @BeachVolkerballCupInputActions m_Wrapper;
         public PlayerActions(@BeachVolkerballCupInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Run => m_Wrapper.m_Player_Run;
-        public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @Throw => m_Wrapper.m_Player_Throw;
-        public InputAction @Shield => m_Wrapper.m_Player_Shield;
-        public InputAction @Dash => m_Wrapper.m_Player_Dash;
-        public InputAction @Rotate => m_Wrapper.m_Player_Rotate;
         public InputAction @Turn => m_Wrapper.m_Player_Turn;
+        public InputAction @Throw => m_Wrapper.m_Player_Throw;
+        public InputAction @Boost => m_Wrapper.m_Player_Boost;
+        public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -478,24 +432,18 @@ public partial class @BeachVolkerballCupInputActions : IInputActionCollection2, 
                 @Run.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
                 @Run.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
                 @Run.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
-                @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Throw.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnThrow;
-                @Throw.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnThrow;
-                @Throw.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnThrow;
-                @Shield.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShield;
-                @Shield.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShield;
-                @Shield.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShield;
-                @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
-                @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
-                @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
-                @Rotate.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
-                @Rotate.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
-                @Rotate.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
                 @Turn.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTurn;
                 @Turn.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTurn;
                 @Turn.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTurn;
+                @Throw.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnThrow;
+                @Throw.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnThrow;
+                @Throw.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnThrow;
+                @Boost.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBoost;
+                @Boost.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBoost;
+                @Boost.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBoost;
+                @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -503,24 +451,18 @@ public partial class @BeachVolkerballCupInputActions : IInputActionCollection2, 
                 @Run.started += instance.OnRun;
                 @Run.performed += instance.OnRun;
                 @Run.canceled += instance.OnRun;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
-                @Throw.started += instance.OnThrow;
-                @Throw.performed += instance.OnThrow;
-                @Throw.canceled += instance.OnThrow;
-                @Shield.started += instance.OnShield;
-                @Shield.performed += instance.OnShield;
-                @Shield.canceled += instance.OnShield;
-                @Dash.started += instance.OnDash;
-                @Dash.performed += instance.OnDash;
-                @Dash.canceled += instance.OnDash;
-                @Rotate.started += instance.OnRotate;
-                @Rotate.performed += instance.OnRotate;
-                @Rotate.canceled += instance.OnRotate;
                 @Turn.started += instance.OnTurn;
                 @Turn.performed += instance.OnTurn;
                 @Turn.canceled += instance.OnTurn;
+                @Throw.started += instance.OnThrow;
+                @Throw.performed += instance.OnThrow;
+                @Throw.canceled += instance.OnThrow;
+                @Boost.started += instance.OnBoost;
+                @Boost.performed += instance.OnBoost;
+                @Boost.canceled += instance.OnBoost;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
             }
         }
     }
@@ -569,12 +511,10 @@ public partial class @BeachVolkerballCupInputActions : IInputActionCollection2, 
     public interface IPlayerActions
     {
         void OnRun(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
-        void OnThrow(InputAction.CallbackContext context);
-        void OnShield(InputAction.CallbackContext context);
-        void OnDash(InputAction.CallbackContext context);
-        void OnRotate(InputAction.CallbackContext context);
         void OnTurn(InputAction.CallbackContext context);
+        void OnThrow(InputAction.CallbackContext context);
+        void OnBoost(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -15,34 +15,25 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "d2faa0a0-e027-4a5d-a155-870bb0ceaf7c",
-                    "expectedControlType": "Button",
+                    "name": "Turn",
+                    "type": "Value",
+                    "id": "105cdbd3-2edc-4934-a3ae-ee5b51354121",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Throw",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "cbcb2a57-a474-46a7-b133-cf144f6de321",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
-                    "name": "Shield",
-                    "type": "Button",
-                    "id": "ec97db61-8659-49c6-afaa-20b82a98e72b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Dash",
+                    "name": "Boost",
                     "type": "Button",
                     "id": "49d5245a-a350-4f94-b4c8-cf578d61000b",
                     "expectedControlType": "Button",
@@ -51,25 +42,38 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Rotate",
-                    "type": "Value",
-                    "id": "7172bb7c-a5ae-46b9-af48-2f521eb69773",
-                    "expectedControlType": "Axis",
-                    "processors": "Normalize(min=-50,max=50)",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Turn",
-                    "type": "Value",
-                    "id": "105cdbd3-2edc-4934-a3ae-ee5b51354121",
-                    "expectedControlType": "Axis",
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "d2faa0a0-e027-4a5d-a155-870bb0ceaf7c",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
+                {
+                    "name": "",
+                    "id": "87f0f51b-040d-4784-8b56-218ded9ee1d8",
+                    "path": "<XInputController>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6fdb596c-c0bb-4f37-b409-c235e9612acf",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "StickDeadzone",
+                    "groups": "",
+                    "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
                 {
                     "name": "2D Vector",
                     "id": "f7a4010c-91c6-422f-91e7-4b14cbdb214a",
@@ -127,12 +131,34 @@
                 },
                 {
                     "name": "",
-                    "id": "6fdb596c-c0bb-4f37-b409-c235e9612acf",
-                    "path": "<Gamepad>/leftStick",
+                    "id": "8cb7676d-a99a-4ee9-b5f2-3d5b500650a2",
+                    "path": "<XInputController>/rightTrigger",
                     "interactions": "",
-                    "processors": "StickDeadzone",
+                    "processors": "",
                     "groups": "",
-                    "action": "Run",
+                    "action": "Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe641861-0da7-43ba-8bd6-e95a17232a77",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d564b1bf-ae99-4e51-957d-36245fa36309",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Throw",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -160,111 +186,12 @@
                 },
                 {
                     "name": "",
-                    "id": "fe641861-0da7-43ba-8bd6-e95a17232a77",
-                    "path": "<Gamepad>/rightTrigger",
+                    "id": "737aae32-21a1-4dd6-95cc-caa7ac6db4b3",
+                    "path": "<XInputController>/rightStick/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Throw",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2ae82452-d746-4a28-86f4-43c469c78eff",
-                    "path": "<Keyboard>/k",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Throw",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f3b10de9-a5c7-4952-b617-d46c6132d174",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Throw",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d564b1bf-ae99-4e51-957d-36245fa36309",
-                    "path": "<XInputController>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Throw",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2b94ae52-9bb0-478e-8e4c-bf6c747a5c7d",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shield",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "75b3d327-54da-4b56-a39e-052b1c173b56",
-                    "path": "<Keyboard>/i",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shield",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "319796b1-6071-46f0-81dc-58b6bdb7d86a",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "Press(pressPoint=0.5)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ae8dc5a5-930d-412e-a196-627e63bfcd0c",
-                    "path": "<Keyboard>/l",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3eaa9db8-9821-49ea-b640-0434a871fb19",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4e9015a8-9ef1-4f5b-8776-ed1f246ce741",
-                    "path": "<Pointer>/delta/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rotate",
+                    "action": "Turn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -276,6 +203,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Turn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "319796b1-6071-46f0-81dc-58b6bdb7d86a",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "Press(pressPoint=0.5)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Boost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ae8dc5a5-930d-412e-a196-627e63bfcd0c",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Boost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3eaa9db8-9821-49ea-b640-0434a871fb19",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Boost",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

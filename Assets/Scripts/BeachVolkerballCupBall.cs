@@ -9,63 +9,74 @@ public class BeachVolkerballCupBall : MonoBehaviour
     private Vector3 _restPos;
     //private Quaternion _restRot;
     private Vector3 _posDelta;
+
+    [Header("COLLIDER")]
+    [HideInInspector]
+    public Collider colliderSphere;
     
     [Header("RIGID BODY")]
     [HideInInspector]
     public Rigidbody rigidBody;
     public Vector2 initialVelocityStrength = new Vector2(0.75f, 7.5f);
     public Vector2 initialAngularVelocityStrength = new Vector2(1f, 2.5f);
-    private float timer = 0;
+    private float _timer = 0f;
     //[HideInInspector]
     public bool inactive = false;
 
     [Header("DEBUG")]
     public Material materialCarry;
     public Material materialThrow;
-    private Material materialDefault;
+    private Material _materialDefault;
 
     void Awake()
     {
+        colliderSphere = GetComponent<SphereCollider>();
         rigidBody = GetComponent<Rigidbody>();
         _controller = GetComponentInParent<BeachVolkerballCupController>();
         
         SetRestPosition(transform);
 
-        materialDefault = GetComponent<Renderer>().material;
+        _materialDefault = GetComponent<Renderer>().material;
     }
 
     private void Update()
     {
         if (rigidBody.velocity.magnitude < _controller.ballMagnitudeThreshold)
         {
-            timer += Time.deltaTime;
+            _timer += Time.deltaTime;
         }
-        if (timer > _controller.ballActiveTimeoutInSec)
+        if (_timer > _controller.ballActiveTimeoutInSec)
         {
             inactive = true;
             _controller.BallInactive();
         }
         
-        /*if (Time.time - _controller.throwInfo.timeStamp >= _controller.ballThrowTimeout)
+        if (_controller.throwInfo.team > -1 && Time.time - _controller.throwInfo.timeStamp >= _controller.ballThrowTimeoutInSec)
         {
-            _controller.ball.SetMaterialDefault();
-        }*/
+            _controller.throwInfo.Reset();
+        }
+
+        if (transform.position.y < -10f)
+        {
+            Debug.LogError("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        }
     }
 
     private void SetRestPosition(Transform tr)
     {
-        _restPos = tr.position;
-        //_restRot = tr.rotation;
+        _restPos = tr.localPosition;
+        //_restRot = tr.localRotation;
     }
     
     public void Reset()
     {
         var tr = transform;
         var randCirc = Random.insideUnitCircle * _controller.ballSpawnRadius;
-        tr.position = new Vector3(randCirc.x, _restPos.y, randCirc.y);
-        tr.rotation = Random.rotation;
+        tr.localPosition = new Vector3(randCirc.x, _restPos.y, randCirc.y);
+        tr.localRotation = Random.rotation;
         SetRestPosition(tr);
 
+        colliderSphere.isTrigger = false;
         InitRb();
 
         SetMaterialDefault();
@@ -74,7 +85,7 @@ public class BeachVolkerballCupBall : MonoBehaviour
     public void InitRb()
     {
         inactive = false;
-        timer = 0f;
+        _timer = 0f;
 
         //rigidBody.velocity = Vector3.zero;
         rigidBody.velocity = Random.Range(initialVelocityStrength.x, initialVelocityStrength.y) * Random.onUnitSphere;
@@ -84,57 +95,58 @@ public class BeachVolkerballCupBall : MonoBehaviour
         Activate();
     }
 
+    /*public void Caught()
+    {
+        collider.isTrigger = true;
+        
+        //rigidBody.velocity = Vector3.zero;
+        //rigidBody.angularVelocity = Vector3.zero;
+    }*/
+
     public void Hold(Transform playerTransform)
     {
         rigidBody.isKinematic = true;
         var tr = transform;
-        _posDelta = tr.position - playerTransform.position;
+        _posDelta = tr.localPosition - playerTransform.localPosition;
         //isHeld = true;
     }
     
     public void Rotate(Transform playerTransform, float angleY)
     {
         //Quaternion rotation = new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w);
-        transform.RotateAround(playerTransform.position, Vector3.up, angleY);
+        transform.RotateAround(playerTransform.localPosition, Vector3.up, angleY);
 
-        //Vector3 delta = transform.position - playerTransform.position;
+        //Vector3 delta = transform.localPosition - playerTransform.localPosition;
         //Debug.Log($"{_posDelta} >>> {delta}");
     }
 
     public void Translate(Transform playerTransform, Vector3 delta)
     {
-        transform.position += delta;
+        transform.localPosition += delta;
     }
 
     public void Activate()
     {
         rigidBody.isKinematic = false;
-        //isHeld = false;
     }
-
-    /*public void FixedUpdate()
-    {
-        
-    }*/
 
     void OnCollisionEnter(Collision collision)
     {
-        if (_controller.throwInfo.team > -1)
+        if (_controller.throwInfo.team == -1) return;
+
+        if ((collision.gameObject.CompareTag("barrier")) || 
+            (collision.gameObject.CompareTag("floor") && Time.time - _controller.throwInfo.timeStamp >= _controller.ballThrowTimeoutInSec))
         {
-            if ((collision.gameObject.CompareTag("barrier")) || 
-                (collision.gameObject.CompareTag("floor") && Time.time - _controller.throwInfo.timeStamp >= _controller.ballThrowTimeout))
-            {
-                //Debug.Log(Time.time);
-                _controller.throwInfo.Reset();
+            //Debug.Log(Time.time);
+            _controller.throwInfo.Reset();
                 
-                //_controller.ball.SetMaterialDefault();
-            }
+            //_controller.ball.SetMaterialDefault();
         }
     }
 
     public void SetMaterialDefault()
     {
-        GetComponent<Renderer>().material = materialDefault;
+        GetComponent<Renderer>().material = _materialDefault;
     }
     
     public void SetMaterialCarry()

@@ -9,7 +9,7 @@ public class BeachVolkerballCupAgentInput : MonoBehaviour
 
     public Vector2 moveInput;
     public float rotateInput;
-    public bool throwPressed;
+    public float throwBall;
     //public bool boostPressed;
     
     void Awake()
@@ -28,20 +28,13 @@ public class BeachVolkerballCupAgentInput : MonoBehaviour
         _inputActions.Disable();
     }
     
-    public bool CheckIfInputSinceLastFrame(ref bool input)
+    public float InputCheckSinceLastFrame(ref float input)
     {
-        if (input)
-        {
-            input = false;
-            return true;
-        }
+        if (input == 0f) return 0f;
         
-        return false;
-    }
-
-    private void Start()
-    {
-        //throw new NotImplementedException();
+        input = 1f;
+        
+        return 1f;
     }
 
     private void Update()
@@ -52,14 +45,9 @@ public class BeachVolkerballCupAgentInput : MonoBehaviour
         }
         
         moveInput = _actionMap.Run.ReadValue<Vector2>();
-        //Debug.Log(moveInput);
         rotateInput = _actionMap.Turn.ReadValue<float>();
-        
-        if (_actionMap.Throw.triggered)
-        {
-            throwPressed = true;
-        }
-        
+        throwBall = _actionMap.Throw.ReadValue<float>();
+
         //if (_actionMap.Dash.triggered)
         //{
         //    dashPressed = true;
