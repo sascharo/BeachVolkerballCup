@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3ff9a9700cb3d4fa6e52eebf497773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colliderSphere: {fileID: 0}
   rigidBody: {fileID: 0}
   initialVelocityStrength: {x: 0.75, y: 7.5}
   initialAngularVelocityStrength: {x: 1, y: 2.5}
@@ -183,32 +184,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7da8ec5f09a7943955e843da83cb7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneMode: 1
-  maxEnvironmentSteps: 5000
-  resetCounter: 0
+  envNumber: 0
+  maxEnvSteps: 5000
+  resetEnvStepsCounter: 0
+  timeBonusScalar: 1
   humanTeamID: 0
   humanPlayerID: 0
   agentsSpawnRadius: 9
   agentsListTeam0:
-  - agentGO: {fileID: 0}
+  - agentGo: {fileID: 0}
     agent: {fileID: 7744085258142907748}
     carryEulerAngles: {x: 0, y: 0, z: 0}
     carryPosition: {x: 0, y: 0, z: 0}
-  - agentGO: {fileID: 0}
+  - agentGo: {fileID: 0}
     agent: {fileID: 5206633799893840371}
     carryEulerAngles: {x: 0, y: 0, z: 0}
     carryPosition: {x: 0, y: 0, z: 0}
   agentsListTeam1:
-  - agentGO: {fileID: 0}
+  - agentGo: {fileID: 0}
     agent: {fileID: 5206633799694224829}
     carryEulerAngles: {x: 0, y: 0, z: 0}
     carryPosition: {x: 0, y: 0, z: 0}
-  - agentGO: {fileID: 0}
+  - agentGo: {fileID: 0}
     agent: {fileID: 5206633800132059102}
     carryEulerAngles: {x: 0, y: 0, z: 0}
     carryPosition: {x: 0, y: 0, z: 0}
   playersRemaining: 
-  minThrowDistance: 5
+  minThrowDistance: 4
   ballSpawnRadius: 9
   ballGO: {fileID: 0}
   ball: {fileID: 5954752760451021809}
@@ -222,7 +224,8 @@ MonoBehaviour:
     timeStamp: 0
   ballThrowTimeoutInSec: 0.6666667
   ballMagnitudeThreshold: 0.005
-  ballActiveTimeoutInSec: 22.5
+  ballInactiveTimeoutInSec: 60
+  ballCarryTimeoutInSec: 5
   projectileForceScalar: 44
   projectileForceInputScalar: 1
   projectileForceMode: 2
@@ -432,7 +435,6 @@ GameObject:
   - component: {fileID: 5954752762281244401}
   - component: {fileID: 5954752762284144337}
   - component: {fileID: 5954752762283144209}
-  - component: {fileID: 5954752762284144339}
   m_Layer: 0
   m_Name: PlayingFieldEnclosure
   m_TagString: barrier
@@ -505,18 +507,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5954752762284144339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5954752762281142993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c04eb5665295b849bf587a38fc9498f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5954752762363973912
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,6 +678,10 @@ PrefabInstance:
     - target: {fileID: 2538105331517306008, guid: e5547ea62df94d44890729f480f004af, type: 3}
       propertyPath: m_TagString
       value: agentRayBack1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385727067841381028, guid: e5547ea62df94d44890729f480f004af, type: 3}
+      propertyPath: m_TagString
+      value: agentShield1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5547ea62df94d44890729f480f004af, type: 3}
@@ -1319,6 +1313,10 @@ PrefabInstance:
     - target: {fileID: 2538105331517306008, guid: e5547ea62df94d44890729f480f004af, type: 3}
       propertyPath: m_TagString
       value: agentRayBack1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385727067841381028, guid: e5547ea62df94d44890729f480f004af, type: 3}
+      propertyPath: m_TagString
+      value: agentShield1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5547ea62df94d44890729f480f004af, type: 3}

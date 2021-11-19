@@ -4,8 +4,8 @@ public class BeachVolkerballCup : MonoBehaviour
 {
     public enum SceneMode
     {
-        TrainingWithLog,
-        TrainingQuiet
+        TrainingQuiet,
+        TrainingWithLog
     }
     public SceneMode sceneMode = SceneMode.TrainingQuiet;
     

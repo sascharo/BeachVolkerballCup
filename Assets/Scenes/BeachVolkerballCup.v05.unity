@@ -177,7 +177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
       propertyPath: m_RootOrder
@@ -352,7 +352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
       propertyPath: m_RootOrder
@@ -429,7 +429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
       propertyPath: m_RootOrder
@@ -511,7 +511,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009000883}
-  m_LocalRotation: {x: 0.18272206, y: 5.9811326e-17, z: 2.0506996e-16, w: 0.9831646}
+  m_LocalRotation: {x: 0.18272206, y: -1.8361682e-15, z: -2.0506996e-16, w: 0.9831646}
   m_LocalPosition: {x: 3, y: 1.27, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -625,7 +625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
       propertyPath: m_RootOrder
@@ -702,7 +702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
       propertyPath: m_RootOrder
@@ -834,7 +834,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1333077573}
-  - component: {fileID: 1333077572}
+  - component: {fileID: 1333077574}
+  - component: {fileID: 1333077575}
   m_Layer: 0
   m_Name: BeachVolkerballCup
   m_TagString: Untagged
@@ -842,19 +843,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1333077572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1333077571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3eddb9fd81266ac4fa4bce7a33feb09c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneMode: 0
 --- !u!4 &1333077573
 Transform:
   m_ObjectHideFlags: 0
@@ -870,6 +858,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1333077574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333077571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec51f47c5ed0478080c449c74fd9c154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityMultiplier: 1
+  fixedDeltaTime: 0.01333
+  maximumDeltaTime: 0.33333334
+  solverIterations: 8
+  solverVelocityIterations: 8
+  reuseCollisionCallbacks: 1
+--- !u!114 &1333077575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333077571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b22846f081344a947a41d8dc4076b2e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logMode: 2
 --- !u!1001 &1517551199
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -891,7 +910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
       propertyPath: m_RootOrder
@@ -968,7 +987,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
       propertyPath: m_RootOrder
@@ -1039,7 +1058,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1888227696}
   m_Layer: 2
-  m_Name: HEURISTIC only implemented for XBOX GAMEPAD at this stage
+  m_Name: HEURISTIC only implemented for XBOX Controller at this stage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1124,7 +1143,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903717484}
-  m_LocalRotation: {x: 0.18272206, y: 5.9811326e-17, z: 2.0506996e-16, w: 0.9831646}
+  m_LocalRotation: {x: 0.18272206, y: -1.8361682e-15, z: -2.0506996e-16, w: 0.9831646}
   m_LocalPosition: {x: 3, y: 1.27, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1194,7 +1213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5954752760944549034, guid: 56420d296826d5041888969f6cc1de85, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5954752760944549036, guid: 56420d296826d5041888969f6cc1de85, type: 3}
       propertyPath: m_RootOrder

@@ -45,20 +45,20 @@ public class BeachVolkerballCupBall : MonoBehaviour
         {
             _timer += Time.deltaTime;
         }
-        if (_timer > _controller.ballActiveTimeoutInSec)
+        if (_timer > _controller.ballInactiveTimeoutInSec && _controller.carryInfo.team <= -1)
         {
             inactive = true;
             _controller.BallInactive();
+        }
+        if (_timer > _controller.ballCarryTimeoutInSec && _controller.carryInfo.team > -1)
+        {
+            inactive = true;
+            _controller.BallCarriedTooLong();
         }
         
         if (_controller.throwInfo.team > -1 && Time.time - _controller.throwInfo.timeStamp >= _controller.ballThrowTimeoutInSec)
         {
             _controller.throwInfo.Reset();
-        }
-
-        if (transform.position.y < -10f)
-        {
-            Debug.LogError("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         }
     }
 
@@ -95,14 +95,6 @@ public class BeachVolkerballCupBall : MonoBehaviour
         Activate();
     }
 
-    /*public void Caught()
-    {
-        collider.isTrigger = true;
-        
-        //rigidBody.velocity = Vector3.zero;
-        //rigidBody.angularVelocity = Vector3.zero;
-    }*/
-
     public void Hold(Transform playerTransform)
     {
         rigidBody.isKinematic = true;
@@ -111,13 +103,9 @@ public class BeachVolkerballCupBall : MonoBehaviour
         //isHeld = true;
     }
     
-    public void Rotate(Transform playerTransform, float angleY)
+    public void RotateAroundPlayer(Transform playerTransform, float angleY)
     {
-        //Quaternion rotation = new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w);
-        transform.RotateAround(playerTransform.localPosition, Vector3.up, angleY);
-
-        //Vector3 delta = transform.localPosition - playerTransform.localPosition;
-        //Debug.Log($"{_posDelta} >>> {delta}");
+        transform.RotateAround(playerTransform.position, Vector3.up, angleY);
     }
 
     public void Translate(Transform playerTransform, Vector3 delta)
@@ -137,7 +125,7 @@ public class BeachVolkerballCupBall : MonoBehaviour
         if ((collision.gameObject.CompareTag("barrier")) || 
             (collision.gameObject.CompareTag("floor") && Time.time - _controller.throwInfo.timeStamp >= _controller.ballThrowTimeoutInSec))
         {
-            //Debug.Log(Time.time);
+            //Debug.Log([{_controller.envNumber}] Time.time);
             _controller.throwInfo.Reset();
                 
             //_controller.ball.SetMaterialDefault();
