@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BeachVolkerballCupLogHandler : ILogHandler
 {
@@ -18,6 +19,7 @@ public class BeachVolkerballCupLogHandler : ILogHandler
 
 public class BvcDebug : MonoBehaviour
 {
+    [Serializable]
     public enum LogMode
     {
         Log,
@@ -25,12 +27,13 @@ public class BvcDebug : MonoBehaviour
         Quiet
     }
 
-    public static BeachVolkerballCupLogHandler Log = new BeachVolkerballCupLogHandler();
+    private static ILogger s_Logger = Debug.unityLogger;
+    private BeachVolkerballCupLogHandler _logHandler;
     public LogMode logMode = LogMode.Error;
 
     private void Awake()
     {
-        Log = new BeachVolkerballCupLogHandler();
+        _logHandler = new BeachVolkerballCupLogHandler();
 
         if (logMode == LogMode.Quiet)
         {

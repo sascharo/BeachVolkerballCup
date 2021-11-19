@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   envNumber: 0
-  maxEnvSteps: 5000
+  maxEnvSteps: 15000
   resetEnvStepsCounter: 0
   timeBonusScalar: 1
   humanTeamID: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
     timeStamp: 0
   ballThrowTimeoutInSec: 0.6666667
   ballMagnitudeThreshold: 0.005
-  ballInactiveTimeoutInSec: 60
+  ballInactiveTimeoutInSec: 30
   ballCarryTimeoutInSec: 5
   projectileForceScalar: 44
   projectileForceInputScalar: 1

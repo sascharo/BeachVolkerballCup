@@ -84,7 +84,7 @@ public class BeachVolkerballCupController : MonoBehaviour
     //[HideInInspector]
     public int envNumber;
     [Tooltip("PER Environment")]
-    public int maxEnvSteps = 5000;
+    public int maxEnvSteps = 7500;
     //public int numberEnvironments = 1;
     //[HideInInspector]
     public int resetEnvStepsCounter = 0;
@@ -129,7 +129,7 @@ public class BeachVolkerballCupController : MonoBehaviour
     [Range(0f, 1f)]
     public float ballMagnitudeThreshold = 0.005f;
     [Range(0f, 600f)]
-    public float ballInactiveTimeoutInSec = 60f;
+    public float ballInactiveTimeoutInSec = 30f;
     [Range(0f, 100f)]
     public float ballCarryTimeoutInSec = 5f;
     
@@ -339,10 +339,12 @@ public class BeachVolkerballCupController : MonoBehaviour
     {
         Debug.Log($"[{envNumber}] Ball inactive for too long.");
         
+        //Debug.Log($"!!!!!!!!!!!!!!!!!!!!!!   {_simpleMultiAgentGroups}   -   {_simpleMultiAgentGroups.Count}");
         var i = 0;
         foreach (var group in _simpleMultiAgentGroups)
         {
-            _simpleMultiAgentGroups[i].AddGroupReward(-1f);
+            //Debug.Log($"!!!!!!!!!!!!!!!!!!!!!!   {i}   -   {group.GetId()}");
+            //_simpleMultiAgentGroups[i].AddGroupReward(-1f);
             group.GroupEpisodeInterrupted();
             i += 1;
         }
@@ -353,13 +355,13 @@ public class BeachVolkerballCupController : MonoBehaviour
     {
         Debug.Log($"[{envNumber}] Player {carryInfo.player} of team {carryInfo.team} kept ball for too long.");
         
-        _agentInfos[carryInfo.team][carryInfo.player].agent.AddReward(-1f);
+        _agentInfos[carryInfo.team][carryInfo.player].agent.AddReward(-0.5f);
         
-        //_simpleMultiAgentGroups[carryInfo.team].GroupEpisodeInterrupted();
-        //_simpleMultiAgentGroups[1 - carryInfo.team].EndGroupEpisode();
+        //Debug.Log($"!!!!!!!!!!!!!!!!!!!!!!   {_simpleMultiAgentGroups}   -   {_simpleMultiAgentGroups.Count}");
         var i = 0;
         foreach (var group in _simpleMultiAgentGroups)
         {
+            //Debug.Log($"!!!!!!!!!!!!!!!!!!!!!!   {i}   -   {group}");
             group.GroupEpisodeInterrupted();
             i += 1;
         }
