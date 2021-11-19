@@ -22,6 +22,8 @@ TagManager:
   - agentRayBack0
   - agentRayBack1
   - cam
+  - agentShield0
+  - agentShield1
   layers:
   - Default
   - TransparentFX
