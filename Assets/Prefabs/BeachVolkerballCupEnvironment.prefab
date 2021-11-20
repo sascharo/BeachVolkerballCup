@@ -131,6 +131,7 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   initialVelocityStrength: {x: 0.75, y: 7.5}
   initialAngularVelocityStrength: {x: 1, y: 2.5}
+  timer: 0
   inactive: 0
   materialCarry: {fileID: 2100000, guid: e8017d2b802b53b4bb05716e96993c2b, type: 2}
   materialThrow: {fileID: 2100000, guid: 14e38c0586b379c4696c53a2a67a49be, type: 2}
@@ -224,6 +225,7 @@ MonoBehaviour:
     timeStamp: 0
   ballThrowTimeoutInSec: 0.6666667
   ballMagnitudeThreshold: 0.005
+  ballTranslateThreshold: 0.0075
   ballInactiveTimeoutInSec: 20
   ballCarryTimeoutInSec: 5
   projectileForceScalar: 44

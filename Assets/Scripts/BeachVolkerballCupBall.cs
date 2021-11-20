@@ -8,7 +8,10 @@ public class BeachVolkerballCupBall : MonoBehaviour
     
     private Vector3 _restPos;
     //private Quaternion _restRot;
-    private Vector3 _posDelta;
+    //private Vector3 _posDelta;
+    [Header("OBSERVATIONS")]
+    private Vector3 _prePos;
+    public Vector3 velocity;
 
     [Header("COLLIDER")]
     [HideInInspector]
@@ -19,7 +22,7 @@ public class BeachVolkerballCupBall : MonoBehaviour
     public Rigidbody rigidBody;
     public Vector2 initialVelocityStrength = new Vector2(0.75f, 7.5f);
     public Vector2 initialAngularVelocityStrength = new Vector2(1f, 2.5f);
-    private float _timer = 0f;
+    public float timer = 0f;
     //[HideInInspector]
     public bool inactive = false;
 
@@ -27,9 +30,11 @@ public class BeachVolkerballCupBall : MonoBehaviour
     public Material materialCarry;
     public Material materialThrow;
     private Material _materialDefault;
-
+    
     void Awake()
     {
+        _prePos = transform.localPosition;
+        
         colliderSphere = GetComponent<SphereCollider>();
         rigidBody = GetComponent<Rigidbody>();
         _controller = GetComponentInParent<BeachVolkerballCupController>();
@@ -41,17 +46,24 @@ public class BeachVolkerballCupBall : MonoBehaviour
 
     private void Update()
     {
-        if (rigidBody.velocity.magnitude < _controller.ballMagnitudeThreshold)
+        if ((!rigidBody.isKinematic && rigidBody.velocity.magnitude < _controller.ballMagnitudeThreshold) ||
+            (rigidBody.isKinematic && (_prePos - transform.localPosition).magnitude < _controller.ballTranslateThreshold))
         {
-            _timer += Time.deltaTime;
+            timer += Time.deltaTime;
         }
-        if (_timer > _controller.ballInactiveTimeoutInSec && _controller.carryInfo.team <= -1)
+        else if (timer > 0f)
         {
+            timer = 0f;
+        }
+        if (timer > _controller.ballInactiveTimeoutInSec && _controller.carryInfo.team <= -1)
+        {
+            //Debug.Log($"ENV [{_controller.envNumber}] Ball inactive for too long.");
             inactive = true;
             _controller.BallInactive();
         }
-        if (_timer > _controller.ballCarryTimeoutInSec && _controller.carryInfo.team > -1)
+        if (timer > _controller.ballCarryTimeoutInSec && _controller.carryInfo.team > -1)
         {
+            //Debug.Log($"ENV [{_controller.envNumber}] Team {_controller.carryInfo.team}, Player {_controller.carryInfo.player} holding ball too long.");
             inactive = true;
             _controller.BallCarriedTooLong();
         }
@@ -60,8 +72,17 @@ public class BeachVolkerballCupBall : MonoBehaviour
         {
             _controller.throwInfo.Reset();
         }
+
+        //_prePos = transform.localPosition;
     }
 
+    public void FixedUpdate()
+    {
+        var pos = transform.localPosition;
+        velocity = (pos - _prePos) / Time.deltaTime;
+        _prePos = pos;
+    }
+    
     private void SetRestPosition(Transform tr)
     {
         _restPos = tr.localPosition;
@@ -85,7 +106,7 @@ public class BeachVolkerballCupBall : MonoBehaviour
     public void InitRb()
     {
         inactive = false;
-        _timer = 0f;
+        timer = 0f;
 
         //rigidBody.velocity = Vector3.zero;
         rigidBody.velocity = Random.Range(initialVelocityStrength.x, initialVelocityStrength.y) * Random.onUnitSphere;
@@ -98,8 +119,8 @@ public class BeachVolkerballCupBall : MonoBehaviour
     public void Hold(Transform playerTransform)
     {
         rigidBody.isKinematic = true;
-        var tr = transform;
-        _posDelta = tr.localPosition - playerTransform.localPosition;
+        //var tr = transform;
+        //_posDelta = tr.localPosition - playerTransform.localPosition;
         //isHeld = true;
     }
     
@@ -125,7 +146,7 @@ public class BeachVolkerballCupBall : MonoBehaviour
         if ((collision.gameObject.CompareTag("barrier")) || 
             (collision.gameObject.CompareTag("floor") && Time.time - _controller.throwInfo.timeStamp >= _controller.ballThrowTimeoutInSec))
         {
-            //Debug.Log([{_controller.envNumber}] Time.time);
+            //Debug.Log(ENV [{_controller.envNumber}] Time.time);
             _controller.throwInfo.Reset();
                 
             //_controller.ball.SetMaterialDefault();

@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 public class BeachVolkerballCupAgent : Agent
 {
-    //private bool _initialized = false;
+    private bool _initialized = false;
     //private bool _initializedByController = false;
 
     private BehaviorParameters _behaviorParameters;
@@ -16,13 +16,15 @@ public class BeachVolkerballCupAgent : Agent
     private BeachVolkerballCupController _controller;
     
     private Vector3 _restPos;
-    private Quaternion _restRot;
-    
-    [Header("OBSERVATIONS")]
+    //private Quaternion _restRot;
+
+    //[Header("OBSERVATIONS")]
     //[SerializeField]
     //private Transform ball;
     //public bool hasBall = false;
     //public bool gotHit = false;
+    //private Vector3 _prePos;
+    //private Vector3 _velocity;
     
     [Header("OBSERVATIONS")]
     [HideInInspector]
@@ -73,10 +75,10 @@ public class BeachVolkerballCupAgent : Agent
         
         _controller = GetComponentInParent<BeachVolkerballCupController>();
         
-        var tr = transform;
-        _restPos = tr.localPosition;
-        _restRot = tr.localRotation;
-        
+        var pos = transform.localPosition;
+        _restPos = pos;
+        //_restRot = tr.localRotation;
+
         input = GetComponent<BeachVolkerballCupAgentInput>();
         _move = GetComponent<BeachVolkerballCupAgentMove>();
 
@@ -91,7 +93,7 @@ public class BeachVolkerballCupAgent : Agent
             projectileTransform = transform.Find("ProjectileDirectionZ").transform;
         }
         
-        //_initialized = true;
+        _initialized = true;
     }
 
     public void InitializeByController(int teamIndex, int playerIndex)
@@ -114,10 +116,6 @@ public class BeachVolkerballCupAgent : Agent
         
         var tr = transform;
         var randCirc = Random.insideUnitCircle * _controller.agentsSpawnRadius;
-        /*Physics.ComputePenetration(
-            thisCollider, transform.localPosition, transform.rotation,
-            collider, otherPosition, otherRotation,
-            out direction, out distance);*/
         tr.localPosition = new Vector3(randCirc.x, _restPos.y, randCirc.y);
         var euler = tr.eulerAngles;
         euler.Set(0f, Random.Range(0f, 360f), 0f);
@@ -125,12 +123,6 @@ public class BeachVolkerballCupAgent : Agent
         
         _renderer.material = _materialBodyDefault;
     }
-    
-    /*public override void OnEpisodeBegin()
-    {
-        hasBall = false;
-        //gotHit = false;
-    }*/
 
     public override void CollectObservations(VectorSensor sensor)
     {
@@ -138,16 +130,20 @@ public class BeachVolkerballCupAgent : Agent
         var pos = tr.localPosition;
         
         //sensor.AddObservation(tr.localPosition);
+        sensor.AddObservation(transform.InverseTransformVector(_rigidBody.velocity));
 
+        //if (0 == _behaviorParameters.TeamId && 0 == playerId)
+        //    Debug.Log($"velocity = {_controller.ball.velocity}");
         var posBall = _controller.ball.gameObject.transform.localPosition;
-        
-        //sensor.AddObservation(_controller.ball.gameObject.transform.localPosition);
-        //sensor.AddObservation(posBall.y);
         sensor.AddObservation(Vector3.Distance(pos, posBall));
         //sensor.AddObservation(_controller.ball.gameObject.transform.InverseTransformVector(_controller.ball.rigidBody.velocity));
-        sensor.AddObservation(_controller.ball.rigidBody.velocity.magnitude);
-
+        sensor.AddObservation(_controller.ball.velocity);
+        //sensor.AddObservation(_controller.ball.rigidBody.velocity.magnitude);
         var angle = Vector3.SignedAngle(transform.forward, posBall - pos, Vector3.up) / 180f;
+        if (_controller.carryInfo.team == _behaviorParameters.TeamId && _controller.carryInfo.player == playerId)
+        {
+            angle = 0f;
+        }
         sensor.AddObservation(angle);
         
         //sensor.AddObservation(hasBall);
@@ -235,7 +231,7 @@ public class BeachVolkerballCupAgent : Agent
 
             if (contact.thisCollider.CompareTag($"agentFront{_behaviorParameters.TeamId}"))
             {
-                Debug.Log($"[{_controller.envNumber}] Agent {playerId} of team {_behaviorParameters.TeamId} caught ball.");
+                Debug.Log($"ENV [{_controller.envNumber}] Agent {playerId} of team {_behaviorParameters.TeamId} caught ball.");
                 colliderFront.isTrigger = true;
                 _controller.ball.colliderSphere.isTrigger = true;
                 colliderShieldGo.SetActive(true);
@@ -251,18 +247,18 @@ public class BeachVolkerballCupAgent : Agent
                 
                 //if (_controller.throwInfo.team == -1)
                 //{
-                //    Debug.Log($"[{_controller.envNumber}] Agent {playerID} of team {_behaviorParameters.TeamId} touched ball.");
+                //    Debug.Log($"ENV [{_controller.envNumber}] Agent {playerID} of team {_behaviorParameters.TeamId} touched ball.");
                 //}
                 if (_controller.throwInfo.team > -1)
                 {
                     if (_controller.throwInfo.team != _behaviorParameters.TeamId)
                     {
-                        //Debug.Log($"[{_controller.envNumber}] Agent {playerID} of team {_behaviorParameters.TeamId} hit by other team {_controller.throwInfo.team}.");
+                        //Debug.Log($"ENV [{_controller.envNumber}] Agent {playerID} of team {_behaviorParameters.TeamId} hit by other team {_controller.throwInfo.team}.");
                         _controller.HitByOpponent(_behaviorParameters.TeamId, playerId);
                     }
                     else if (_controller.throwInfo.player != playerId)
                     {
-                        //Debug.Log($"[{_controller.envNumber}] Agent {playerID} of team {_behaviorParameters.TeamId} hit by own team ({_controller.throwInfo.team}).");
+                        //Debug.Log($"ENV [{_controller.envNumber}] Agent {playerID} of team {_behaviorParameters.TeamId} hit by own team ({_controller.throwInfo.team}).");
                         _controller.HitByTeamplayer(_behaviorParameters.TeamId, playerId);
                     }
                 }
@@ -270,13 +266,13 @@ public class BeachVolkerballCupAgent : Agent
         }
         /*else if (collision.transform.CompareTag("barrier"))
         {
-            Debug.Log($"[{_controller.envNumber}] Agent {playerID} of team {_behaviorParameters.TeamId} hit barrier.");
+            Debug.Log($"ENV [{_controller.envNumber}] Agent {playerID} of team {_behaviorParameters.TeamId} hit barrier.");
         }*/
     }
 
     private void ThrowBall()
     {
-        Debug.Log($"[{_controller.envNumber}] Agent {playerId} of team {_behaviorParameters.TeamId} throws ball.");
+        //Debug.Log($"ENV [{_controller.envNumber}] Agent {playerId} of team {_behaviorParameters.TeamId} throws ball.");
         colliderFront.isTrigger = false;
         _controller.ball.colliderSphere.isTrigger = false;
         colliderShieldGo.SetActive(false);
