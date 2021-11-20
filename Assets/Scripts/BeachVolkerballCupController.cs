@@ -261,7 +261,7 @@ public class BeachVolkerballCupController : MonoBehaviour
         //ball.Caught();
         
         //Debug.Log($"[{envNumber}] Team {teamID} caught the ball, team {1 - teamID} didn't.");
-        _simpleMultiAgentGroups[teamId].AddGroupReward(1f);
+        _simpleMultiAgentGroups[teamId].AddGroupReward(0.5f);
         _simpleMultiAgentGroups[1 - teamId].AddGroupReward(-1f);
 
         carryInfo.Set(teamId, playerId, Time.time);
@@ -282,7 +282,7 @@ public class BeachVolkerballCupController : MonoBehaviour
         ball.rigidBody.AddForce(projectileTransform.forward * projectileForceScalar * (throwStrength * projectileForceInputScalar), projectileForceMode);
         
         //Debug.Log($"[{envNumber}] Team {throwInfo.team} throws ball.");
-        //_simpleMultiAgentGroups[throwInfo.team].AddGroupReward(0.5f);
+        _simpleMultiAgentGroups[throwInfo.team].AddGroupReward(0.5f);
 
         carryInfo.Reset();
     }

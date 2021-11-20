@@ -21,7 +21,7 @@ public class BeachVolkerballCupAgent : Agent
     [Header("OBSERVATIONS")]
     //[SerializeField]
     //private Transform ball;
-    public bool hasBall = false;
+    //public bool hasBall = false;
     //public bool gotHit = false;
     
     [Header("OBSERVATIONS")]
@@ -126,11 +126,11 @@ public class BeachVolkerballCupAgent : Agent
         _renderer.material = _materialBodyDefault;
     }
     
-    public override void OnEpisodeBegin()
+    /*public override void OnEpisodeBegin()
     {
         hasBall = false;
         //gotHit = false;
-    }
+    }*/
 
     public override void CollectObservations(VectorSensor sensor)
     {
@@ -151,30 +151,30 @@ public class BeachVolkerballCupAgent : Agent
         sensor.AddObservation(angle);
         
         //sensor.AddObservation(hasBall);
-        var carried = 0f;
+        var carried = -1f;
         if (_controller.carryInfo.team > -1)
         {
-            carried = 3f;
+            carried = 2f;
             if (_controller.carryInfo.team == _behaviorParameters.TeamId)
             {
-                carried = 2f;
+                carried = 1f;
                 if (_controller.carryInfo.player == playerId)
                 {
-                    carried = 1f;
+                    carried = 0f;
                 }
             }
         }
         sensor.AddObservation(carried);
-        var thrown = 0f;
+        var thrown = -1f;
         if (_controller.throwInfo.team > -1)
         {
-            thrown = 3f;
+            thrown = 2f;
             if (_controller.throwInfo.team == _behaviorParameters.TeamId)
             {
-                thrown = 2f;
+                thrown = 1f;
                 if (_controller.throwInfo.player == playerId)
                 {
-                    thrown = 1f;
+                    thrown = 0f;
                 }
             }
         }
@@ -200,7 +200,7 @@ public class BeachVolkerballCupAgent : Agent
         var moveDir = transform.TransformDirection(new Vector3(_inputH, 0f, _inputV));
         _move.Run(moveDir);
         
-        if (hasBall && _inputThrowStrength > 0f)
+        if (_controller.carryInfo.team == _behaviorParameters.TeamId && _controller.carryInfo.player == playerId && _inputThrowStrength > 0f)
         {
             ThrowBall();
         }
@@ -239,9 +239,9 @@ public class BeachVolkerballCupAgent : Agent
                 colliderFront.isTrigger = true;
                 _controller.ball.colliderSphere.isTrigger = true;
                 colliderShieldGo.SetActive(true);
-                hasBall = true;
+                //hasBall = true;
                 _controller.CaughtBall(_behaviorParameters.TeamId, playerId);
-                AddReward(1f);
+                //AddReward(1f);
                 _controller.ball.SetMaterialCarry();
                 //_renderer.material = materialBodyCarry;
             }
@@ -280,7 +280,7 @@ public class BeachVolkerballCupAgent : Agent
         colliderFront.isTrigger = false;
         _controller.ball.colliderSphere.isTrigger = false;
         colliderShieldGo.SetActive(false);
-        hasBall = false;
+        //hasBall = false;
         _controller.ThrowBall(transform, projectileTransform, _inputThrowStrength);
         _controller.ball.SetMaterialThrow();
         _renderer.material = _materialBodyDefault;

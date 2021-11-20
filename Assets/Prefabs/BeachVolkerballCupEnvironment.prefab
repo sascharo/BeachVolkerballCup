@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   envNumber: 0
-  maxEnvSteps: 15000
+  maxEnvSteps: 10000
   resetEnvStepsCounter: 0
   timeBonusScalar: 1
   humanTeamID: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
     timeStamp: 0
   ballThrowTimeoutInSec: 0.6666667
   ballMagnitudeThreshold: 0.005
-  ballInactiveTimeoutInSec: 30
+  ballInactiveTimeoutInSec: 20
   ballCarryTimeoutInSec: 5
   projectileForceScalar: 44
   projectileForceInputScalar: 1
@@ -1246,6 +1246,10 @@ PrefabInstance:
       propertyPath: playerID
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1937152351359656881, guid: e5547ea62df94d44890729f480f004af, type: 3}
+      propertyPath: playerId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1937152351359656886, guid: e5547ea62df94d44890729f480f004af, type: 3}
       propertyPath: m_Name
       value: Team1Agent1
@@ -1345,6 +1349,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1937152351359656881, guid: e5547ea62df94d44890729f480f004af, type: 3}
       propertyPath: playerID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937152351359656881, guid: e5547ea62df94d44890729f480f004af, type: 3}
+      propertyPath: playerId
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1937152351359656886, guid: e5547ea62df94d44890729f480f004af, type: 3}
