@@ -1,4 +1,4 @@
-### BeachVolkerballCup
+### Beach Völkerball Cup
 
 ```
              ..ee$$$$$ee..
