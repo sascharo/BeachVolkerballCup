@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using Unity.MLAgents;
-using UnityEditor;
 using Random = UnityEngine.Random;
 
 public class BeachVolkerballCupController : MonoBehaviour
@@ -16,8 +15,6 @@ public class BeachVolkerballCupController : MonoBehaviour
         [HideInInspector]
         public GameObject agentGo;
         public BeachVolkerballCupAgent agent;
-        //public bool hasBall;
-        //public bool gotHit;
         [HideInInspector]
         public Vector3 carryEulerAngles;
         [HideInInspector]
@@ -95,8 +92,10 @@ public class BeachVolkerballCupController : MonoBehaviour
     public float timeBonusScalar = 1f;
     
     [Header("HUMAN PLAYER")]
+    [Tooltip("Hardcoded Range")]
     [Range(0, 1)]
     public int humanTeamID = 0;
+    [Tooltip("Hardcoded Range")]
     [Range(0, 1)]
     public int humanPlayerID = 0;
     
@@ -277,7 +276,7 @@ public class BeachVolkerballCupController : MonoBehaviour
         //ball.Caught();
         
         //Debug.Log($"ENV [{envNumber}] Team {teamID} caught the ball, team {1 - teamID} didn't.");
-        Debug.Log($"ENV [{envNumber}] Agent {playerId} of team {teamId} caught ball.");
+        Debug.Log($"ENV [{envNumber}] Team {teamId}, agent {playerId} caught ball.");
         _simpleMultiAgentGroups[teamId].AddGroupReward(1f);
         _simpleMultiAgentGroups[1 - teamId].AddGroupReward(-1f);
 
@@ -310,13 +309,13 @@ public class BeachVolkerballCupController : MonoBehaviour
         }
         if (reward)
         {
-            Debug.Log($"ENV [{envNumber}] Agent {throwInfo.player} of team {throwInfo.team} threw ball above 'minThrowDistance'.");
+            Debug.Log($"ENV [{envNumber}] Team {throwInfo.team}, agent {throwInfo.player} threw ball above 'minThrowDistance'.");
             //Debug.Log($"ENV [{envNumber}] Team {throwInfo.team} throws ball.");
-            //_simpleMultiAgentGroups[throwInfo.team].AddGroupReward(0.01f);
+            _simpleMultiAgentGroups[throwInfo.team].AddGroupReward(0.01f);
         }
         else
         {
-            Debug.Log($"ENV [{envNumber}] Agent {throwInfo.player} of team {throwInfo.team} threw ball below 'minThrowDistance'.");
+            Debug.Log($"ENV [{envNumber}] Team {throwInfo.team}, agent {throwInfo.player} threw ball below 'minThrowDistance'.");
         }
 
         carryInfo.Reset();
@@ -345,7 +344,7 @@ public class BeachVolkerballCupController : MonoBehaviour
             }
             else
             {
-                Debug.Log($"ENV [{envNumber}] Team {throwInfo.team} wins!");
+                Debug.Log($"ENV [{envNumber}] Team {throwInfo.team} wins! Team {teamId} loses.");
                 //_simpleMultiAgentGroups[teamId].AddGroupReward(2f - (_timeBonus * ((float)resetEnvStepsCounter / (float)maxEnvSteps)));
                 _simpleMultiAgentGroups[throwInfo.team].AddGroupReward(1f + timeBonusScalar - ( timeBonusScalar * ( (float)resetEnvStepsCounter / (float)maxEnvSteps ) ));
                 _simpleMultiAgentGroups[teamId].AddGroupReward(-1f);
@@ -360,14 +359,14 @@ public class BeachVolkerballCupController : MonoBehaviour
         else
         {
             Debug.Log($"ENV [{envNumber}] Team {throwInfo.team} hit team {teamId} too close at {distance} m.");
-            //_agentInfos[throwInfo.team][throwInfo.player].agent.AddReward(-0.5f);
-            //_simpleMultiAgentGroups[throwInfo.team].AddGroupReward(-0.5f);
+            _agentInfos[throwInfo.team][throwInfo.player].agent.AddReward(-0.0001f);
+            //_simpleMultiAgentGroups[throwInfo.team].AddGroupReward(-0.00001f);
         }
     }
     
     public void HitByTeamPlayer(int teamId, int playerId)
     {
-        Debug.Log($"ENV [{envNumber}] Team {teamId} hit by own team.");
+        Debug.Log($"ENV [{envNumber}] Team {teamId}, player {playerId} hit by own team.");
         _simpleMultiAgentGroups[teamId].AddGroupReward(-1f);
     }
 
@@ -387,7 +386,7 @@ public class BeachVolkerballCupController : MonoBehaviour
     
     public void BallCarriedTooLong()
     {
-        Debug.Log($"ENV [{envNumber}] Team {carryInfo.team}, Player {carryInfo.player} holding ball too long [other team: {1 - carryInfo.team}].");
+        Debug.Log($"ENV [{envNumber}] Team {carryInfo.team}, player {carryInfo.player} holding ball too long [other team: {1 - carryInfo.team}].");
         
         //_agentInfos[carryInfo.team][carryInfo.player].agent.AddReward(-0.5f);
         

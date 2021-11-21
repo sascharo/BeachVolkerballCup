@@ -224,10 +224,6 @@ public class BeachVolkerballCupAgent : Agent
         contActionsOut[1] = input.moveInput.x;
         contActionsOut[2] = input.rotateInput;
         contActionsOut[3] = input.throwBall;
-        
-        //var discreteActionsOut = actionsOut.DiscreteActions;
-        //discreteActionsOut[0] = input.CheckIfInputSinceLastFrame(ref input.throwPressed) ? 1 : 0;
-        //discreteActionsOut[1] = input.CheckIfInputSinceLastFrame(ref input.boostPressed) ? 1 : 0;
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
