@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Threading;
 using UnityEngine;
 using Unity.MLAgents;
 using Random = UnityEngine.Random;
@@ -297,10 +298,11 @@ public class BeachVolkerballCupController : MonoBehaviour
         ball.rigidBody.angularVelocity = Random.Range(projectileAngularVelocityStrength.x, projectileAngularVelocityStrength.y) * Random.onUnitSphere;
         ball.rigidBody.AddForce(projectileTransform.forward * projectileForceScalar * (throwStrength * projectileForceInputScalar), projectileForceMode);
 
+        var distance = 0f;
         var reward = true;
         foreach (var agentInfo in _agentInfos[1 - throwInfo.team])
         {
-            var distance = (agentInfo.agentGo.transform.localPosition - _agentInfos[throwInfo.team][throwInfo.player].agentGo.transform.localPosition).magnitude;
+            distance = (agentInfo.agentGo.transform.localPosition - _agentInfos[throwInfo.team][throwInfo.player].agentGo.transform.localPosition).magnitude;
             if (distance < minThrowDistance)
             {
                 reward = false;
@@ -309,13 +311,13 @@ public class BeachVolkerballCupController : MonoBehaviour
         }
         if (reward)
         {
-            Debug.Log($"ENV [{envNumber}] Team {throwInfo.team}, agent {throwInfo.player} threw ball above 'minThrowDistance'.");
+            Debug.Log($"ENV [{envNumber}] Team {throwInfo.team}, agent {throwInfo.player} threw ball at {distance}, above 'minThrowDistance = {minThrowDistance}'.");
             //Debug.Log($"ENV [{envNumber}] Team {throwInfo.team} throws ball.");
             _simpleMultiAgentGroups[throwInfo.team].AddGroupReward(0.01f);
         }
         else
         {
-            Debug.Log($"ENV [{envNumber}] Team {throwInfo.team}, agent {throwInfo.player} threw ball below 'minThrowDistance'.");
+            Debug.Log($"ENV [{envNumber}] Team {throwInfo.team}, agent {throwInfo.player} threw ball at {distance}, below 'minThrowDistance = {minThrowDistance}'.");
         }
 
         carryInfo.Reset();
@@ -370,6 +372,12 @@ public class BeachVolkerballCupController : MonoBehaviour
         _simpleMultiAgentGroups[teamId].AddGroupReward(-1f);
     }
 
+    public void HitBarrier()
+    {
+        Debug.Log($"ENV [{envNumber}] Team {throwInfo.team}, player {throwInfo.player} hit barrier.");
+        _agentInfos[throwInfo.team][throwInfo.player].agent.AddReward(-0.01f);
+    }
+    
     public void BallInactive()
     {
         Debug.Log($"ENV [{envNumber}] Ball inactive for too long.");

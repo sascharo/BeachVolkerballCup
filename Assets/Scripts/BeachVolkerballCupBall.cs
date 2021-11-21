@@ -143,6 +143,11 @@ public class BeachVolkerballCupBall : MonoBehaviour
     {
         if (_controller.throwInfo.team == -1) return;
 
+        if (collision.gameObject.CompareTag("barrier") && _controller.throwInfo.player > -1)
+        {
+            _controller.HitBarrier();
+        }
+        
         if ((collision.gameObject.CompareTag("barrier")) || 
             (collision.gameObject.CompareTag("floor") && Time.time - _controller.throwInfo.timeStamp >= _controller.ballThrowTimeoutInSec))
         {
