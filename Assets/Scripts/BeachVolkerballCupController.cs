@@ -270,7 +270,7 @@ public class BeachVolkerballCupController : MonoBehaviour
             }
             _agentInfos[carryInfo.team][carryInfo.player].carryPosition = position;
         }
-    } 
+    }
     
     public void CaughtBall(int teamId, int playerId)
     {
@@ -278,6 +278,8 @@ public class BeachVolkerballCupController : MonoBehaviour
         
         //Debug.Log($"ENV [{envNumber}] Team {teamID} caught the ball, team {1 - teamID} didn't.");
         Debug.Log($"ENV [{envNumber}] Team {teamId}, agent {playerId} caught ball.");
+        
+        _agentInfos[teamId][playerId].agent.AddReward(1f);
         _simpleMultiAgentGroups[teamId].AddGroupReward(1f);
         _simpleMultiAgentGroups[1 - teamId].AddGroupReward(-1f);
 
@@ -312,7 +314,7 @@ public class BeachVolkerballCupController : MonoBehaviour
         if (reward)
         {
             Debug.Log($"ENV [{envNumber}] Team {throwInfo.team}, agent {throwInfo.player} threw ball at {distance}, above 'minThrowDistance = {minThrowDistance}'.");
-            //Debug.Log($"ENV [{envNumber}] Team {throwInfo.team} throws ball.");
+
             _simpleMultiAgentGroups[throwInfo.team].AddGroupReward(0.01f);
         }
         else
