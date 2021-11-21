@@ -196,7 +196,7 @@ public class BeachVolkerballCupController : MonoBehaviour
         _initialized = true;
     }
 
-    void ResetScene()
+    private void ResetScene()
     {
         //Debug.Log($"{_simpleMultiAgentGroups[1].GetRegisteredAgents()}");
         //_simpleMultiAgentGroups[1].RegisterAgent(_agentInfos[1][0].agent);
@@ -248,7 +248,7 @@ public class BeachVolkerballCupController : MonoBehaviour
     {
         if (!_initialized)
         {
-            Debug.LogWarning("NOT INITIALIZED!");
+            Debug.LogWarning($"ENV [{envNumber}] NOT INITIALIZED!");
             Initialize();
         }
         
@@ -277,6 +277,7 @@ public class BeachVolkerballCupController : MonoBehaviour
         //ball.Caught();
         
         //Debug.Log($"ENV [{envNumber}] Team {teamID} caught the ball, team {1 - teamID} didn't.");
+        Debug.Log($"ENV [{envNumber}] Agent {playerId} of team {teamId} caught ball.");
         _simpleMultiAgentGroups[teamId].AddGroupReward(1f);
         _simpleMultiAgentGroups[1 - teamId].AddGroupReward(-1f);
 
@@ -311,7 +312,7 @@ public class BeachVolkerballCupController : MonoBehaviour
         {
             Debug.Log($"ENV [{envNumber}] Agent {throwInfo.player} of team {throwInfo.team} threw ball above 'minThrowDistance'.");
             //Debug.Log($"ENV [{envNumber}] Team {throwInfo.team} throws ball.");
-            _simpleMultiAgentGroups[throwInfo.team].AddGroupReward(1f);
+            //_simpleMultiAgentGroups[throwInfo.team].AddGroupReward(0.01f);
         }
         else
         {
@@ -328,7 +329,7 @@ public class BeachVolkerballCupController : MonoBehaviour
         if (distance >= minThrowDistance)
         {
             Debug.Log($"ENV [{envNumber}] Team {teamId} hit by team {throwInfo.team} at {distance} m.");
-            _agentInfos[throwInfo.team][throwInfo.player].agent.AddReward(0.75f);
+            _agentInfos[throwInfo.team][throwInfo.player].agent.AddReward(1f);
 
             _agentInfos[teamId][playerId].agent.gameObject.SetActive(false);
             carryInfo.Reset();
@@ -359,12 +360,12 @@ public class BeachVolkerballCupController : MonoBehaviour
         else
         {
             Debug.Log($"ENV [{envNumber}] Team {throwInfo.team} hit team {teamId} too close at {distance} m.");
-            _agentInfos[throwInfo.team][throwInfo.player].agent.AddReward(-0.5f);
-            _simpleMultiAgentGroups[throwInfo.team].AddGroupReward(-0.5f);
+            //_agentInfos[throwInfo.team][throwInfo.player].agent.AddReward(-0.5f);
+            //_simpleMultiAgentGroups[throwInfo.team].AddGroupReward(-0.5f);
         }
     }
     
-    public void HitByTeamplayer(int teamId, int playerId)
+    public void HitByTeamPlayer(int teamId, int playerId)
     {
         Debug.Log($"ENV [{envNumber}] Team {teamId} hit by own team.");
         _simpleMultiAgentGroups[teamId].AddGroupReward(-1f);
@@ -388,7 +389,7 @@ public class BeachVolkerballCupController : MonoBehaviour
     {
         Debug.Log($"ENV [{envNumber}] Team {carryInfo.team}, Player {carryInfo.player} holding ball too long [other team: {1 - carryInfo.team}].");
         
-        _agentInfos[carryInfo.team][carryInfo.player].agent.AddReward(-0.5f);
+        //_agentInfos[carryInfo.team][carryInfo.player].agent.AddReward(-0.5f);
         
         _simpleMultiAgentGroups[carryInfo.team].EndGroupEpisode();
         _simpleMultiAgentGroups[1 - carryInfo.team].GroupEpisodeInterrupted();

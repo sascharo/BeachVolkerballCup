@@ -31,7 +31,7 @@ public class BvcDebug : MonoBehaviour
     private BeachVolkerballCupLogHandler _logHandler;
     public LogMode logMode = LogMode.Error;
 
-    private void Awake()
+    void Awake()
     {
         _logHandler = new BeachVolkerballCupLogHandler();
 

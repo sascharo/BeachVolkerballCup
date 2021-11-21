@@ -44,7 +44,7 @@ public class BeachVolkerballCupBall : MonoBehaviour
         _materialDefault = GetComponent<Renderer>().material;
     }
 
-    private void Update()
+    void Update()
     {
         if ((!rigidBody.isKinematic && rigidBody.velocity.magnitude < _controller.ballMagnitudeThreshold) ||
             (rigidBody.isKinematic && (_prePos - transform.localPosition).magnitude < _controller.ballTranslateThreshold))
@@ -76,7 +76,7 @@ public class BeachVolkerballCupBall : MonoBehaviour
         //_prePos = transform.localPosition;
     }
 
-    public void FixedUpdate()
+    void FixedUpdate()
     {
         var pos = transform.localPosition;
         velocity = (pos - _prePos) / Time.deltaTime;

@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3ff9a9700cb3d4fa6e52eebf497773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0, z: 0}
   colliderSphere: {fileID: 0}
   rigidBody: {fileID: 0}
   initialVelocityStrength: {x: 0.75, y: 7.5}
@@ -186,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   envNumber: 0
-  maxEnvSteps: 10000
+  maxEnvSteps: 12500
   resetEnvStepsCounter: 0
   timeBonusScalar: 1
   humanTeamID: 0

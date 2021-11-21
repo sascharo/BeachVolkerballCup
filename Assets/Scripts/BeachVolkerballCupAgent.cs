@@ -8,6 +8,8 @@ using Random = UnityEngine.Random;
 
 public class BeachVolkerballCupAgent : Agent
 {
+    readonly double TOLERANCE = 0.000000001;
+    
     private bool _initialized = false;
     //private bool _initializedByController = false;
 
@@ -35,16 +37,12 @@ public class BeachVolkerballCupAgent : Agent
     private float _inputThrowStrength;
     //private float _inputBoost;
     private BeachVolkerballCupAgentMove _move;
+    [HideInInspector]
+    public float gotHit { get; private set; } = 0f;
     
     [Header("TEAM")]
     //private int _teamId;
     public int playerId;
-
-    /*private Material floorMaterial;
-    [Header("MATERIALS")]
-    [SerializeField] private Material winMaterial;
-    [SerializeField] private Material loseMaterial;
-    [SerializeField] private MeshRenderer floorMeshRenderer;*/
 
     [Header("COLLIDERS / RIGID BODY")]
     [HideInInspector]
@@ -63,12 +61,20 @@ public class BeachVolkerballCupAgent : Agent
     private Material _materialBodyDefault;
     public Material materialBodyCarry;
 
-    public void Awake()
+    void Awake()
     {
         _renderer = transform.Find("Body").GetComponent<Renderer>();
         _materialBodyDefault = _renderer.material;
     }
 
+    void Update()
+    {
+        if (_initialized) return;
+        
+        Debug.LogWarning($"PLAYER [{_behaviorParameters.TeamId}][{playerId}] NOT INITIALIZED!");
+        Initialize();
+    }
+    
     public override void Initialize()
     {
         _behaviorParameters = GetComponent<BehaviorParameters>();
@@ -131,9 +137,7 @@ public class BeachVolkerballCupAgent : Agent
         
         //sensor.AddObservation(tr.localPosition);
         sensor.AddObservation(transform.InverseTransformVector(_rigidBody.velocity));
-
-        //if (0 == _behaviorParameters.TeamId && 0 == playerId)
-        //    Debug.Log($"velocity = {_controller.ball.velocity}");
+        
         var posBall = _controller.ball.gameObject.transform.localPosition;
         sensor.AddObservation(Vector3.Distance(pos, posBall));
         //sensor.AddObservation(_controller.ball.gameObject.transform.InverseTransformVector(_controller.ball.rigidBody.velocity));
@@ -146,7 +150,14 @@ public class BeachVolkerballCupAgent : Agent
         }
         sensor.AddObservation(angle);
         
-        //sensor.AddObservation(hasBall);
+        /*if (_behaviorParameters.TeamId == 1 && playerId == 0)
+            Debug.Log($"GOTHIT = {gotHit}");*/
+        sensor.AddObservation(gotHit);
+        if (Math.Abs(gotHit - 1f) < TOLERANCE)
+        {
+            gotHit = 0f;
+        }
+        
         var carried = -1f;
         if (_controller.carryInfo.team > -1)
         {
@@ -176,6 +187,7 @@ public class BeachVolkerballCupAgent : Agent
         }
         sensor.AddObservation(thrown);
         sensor.AddObservation(_controller.playersRemaining[_behaviorParameters.TeamId]);
+        sensor.AddObservation(_controller.playersRemaining[1 - _behaviorParameters.TeamId]);
     }
 
     public void MoveAgent(ActionBuffers actionBuffers)
@@ -231,7 +243,7 @@ public class BeachVolkerballCupAgent : Agent
 
             if (contact.thisCollider.CompareTag($"agentFront{_behaviorParameters.TeamId}"))
             {
-                Debug.Log($"ENV [{_controller.envNumber}] Agent {playerId} of team {_behaviorParameters.TeamId} caught ball.");
+                //Debug.Log($"ENV [{_controller.envNumber}] Agent {playerId} of team {_behaviorParameters.TeamId} caught ball.");
                 colliderFront.isTrigger = true;
                 _controller.ball.colliderSphere.isTrigger = true;
                 colliderShieldGo.SetActive(true);
@@ -245,21 +257,19 @@ public class BeachVolkerballCupAgent : Agent
             {
                 _controller.ball.SetMaterialDefault();
                 
-                //if (_controller.throwInfo.team == -1)
-                //{
-                //    Debug.Log($"ENV [{_controller.envNumber}] Agent {playerID} of team {_behaviorParameters.TeamId} touched ball.");
-                //}
                 if (_controller.throwInfo.team > -1)
                 {
                     if (_controller.throwInfo.team != _behaviorParameters.TeamId)
                     {
                         //Debug.Log($"ENV [{_controller.envNumber}] Agent {playerID} of team {_behaviorParameters.TeamId} hit by other team {_controller.throwInfo.team}.");
+                        gotHit = 2f;
                         _controller.HitByOpponent(_behaviorParameters.TeamId, playerId);
                     }
                     else if (_controller.throwInfo.player != playerId)
                     {
                         //Debug.Log($"ENV [{_controller.envNumber}] Agent {playerID} of team {_behaviorParameters.TeamId} hit by own team ({_controller.throwInfo.team}).");
-                        _controller.HitByTeamplayer(_behaviorParameters.TeamId, playerId);
+                        gotHit = 1f;
+                        _controller.HitByTeamPlayer(_behaviorParameters.TeamId, playerId);
                     }
                 }
             }
