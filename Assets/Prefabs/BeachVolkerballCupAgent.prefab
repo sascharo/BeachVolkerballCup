@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1937152351359656883}
   - component: {fileID: 1937152351359656882}
   - component: {fileID: 1937152351359656893}
-  - component: {fileID: 3513040915410901112}
+  - component: {fileID: 7699388544538645923}
   m_Layer: 0
   m_Name: BeachVolkerballCupAgent
   m_TagString: Untagged
@@ -246,7 +246,7 @@ MonoBehaviour:
   agentSensitivity: 3
   agentSmoothTime: 0.05
   maxAngularVel: 50
---- !u!114 &3513040915410901112
+--- !u!114 &7699388544538645923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1937152351359656886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a6da8f78a394c6ab027688eab81e04d, type: 3}
+  m_Script: {fileID: 11500000, guid: 897052913d2edd24b94345a37a67b183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   debugCommandLineOverride: 
