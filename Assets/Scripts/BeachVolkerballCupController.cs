@@ -84,7 +84,6 @@ public class BeachVolkerballCupController : MonoBehaviour
     public int envNumber;
     [Tooltip("PER Environment")]
     public int maxEnvSteps = 10000;
-    //public int numberEnvironments = 1;
     //[HideInInspector]
     public int resetEnvStepsCounter = 0;
     private EnvironmentParameters _envParameters;
@@ -139,8 +138,6 @@ public class BeachVolkerballCupController : MonoBehaviour
     public float ballCarryTimeoutInSec = 5f;
     
     [Header("BALL PROJECTILE")]
-    //[Range(90f, 90f)]
-    //public float projectileAngle = -5.5f;
     [Range(0f, 1000f)]
     public float projectileForceScalar = 44f;
     [Range(0f, 1f)]
@@ -198,10 +195,6 @@ public class BeachVolkerballCupController : MonoBehaviour
 
     private void ResetScene()
     {
-        //Debug.Log($"{_simpleMultiAgentGroups[1].GetRegisteredAgents()}");
-        //_simpleMultiAgentGroups[1].RegisterAgent(_agentInfos[1][0].agent);
-        //Debug.Log($"{_simpleMultiAgentGroups[1].GetRegisteredAgents()}");
-        
         resetEnvStepsCounter = 0;
         
         _timeBonus = _envParameters.GetWithDefault("time_bonus_scale", 1f);
@@ -209,12 +202,10 @@ public class BeachVolkerballCupController : MonoBehaviour
         var teamIdx = 0;
         foreach (var agentInfos in _agentInfos)
         {
-            //Debug.Log($"teamIdx = {teamIdx}");
             playersRemaining[teamIdx] = agentInfos.Count;
             
             foreach (var agentInfo in agentInfos)
             {
-                //Debug.Log($"agent = {agentInfo.agentGo.name}");
                 agentInfo.agent.gameObject.SetActive(true);
                 agentInfo.agent.Reset();
                 
@@ -274,9 +265,6 @@ public class BeachVolkerballCupController : MonoBehaviour
     
     public void CaughtBall(int teamId, int playerId)
     {
-        //ball.Caught();
-        
-        //Debug.Log($"ENV [{envNumber}] Team {teamID} caught the ball, team {1 - teamID} didn't.");
         Debug.Log($"ENV [{envNumber}] Team {teamId}, agent {playerId} caught ball.");
         
         _agentInfos[teamId][playerId].agent.AddReward(1f);
@@ -332,6 +320,7 @@ public class BeachVolkerballCupController : MonoBehaviour
         if (distance >= minThrowDistance)
         {
             Debug.Log($"ENV [{envNumber}] Team {teamId} hit by team {throwInfo.team} at {distance} m.");
+            
             _agentInfos[throwInfo.team][throwInfo.player].agent.AddReward(1f);
 
             _agentInfos[teamId][playerId].agent.gameObject.SetActive(false);
@@ -339,7 +328,7 @@ public class BeachVolkerballCupController : MonoBehaviour
             ball.colliderSphere.isTrigger = false;
 
             playersRemaining[teamId] -= 1;
-            //Debug.Log($"ENV [{envNumber}] Team {teamID}: {playersRemaining[teamID]}");
+            Debug.Log($"ENV [{envNumber}] Team {teamId} has {playersRemaining[teamId]} players remaining.");
             
             if (playersRemaining[teamId] > 0)
             {
@@ -349,6 +338,7 @@ public class BeachVolkerballCupController : MonoBehaviour
             else
             {
                 Debug.Log($"ENV [{envNumber}] Team {throwInfo.team} wins! Team {teamId} loses.");
+                
                 //_simpleMultiAgentGroups[teamId].AddGroupReward(2f - (_timeBonus * ((float)resetEnvStepsCounter / (float)maxEnvSteps)));
                 _simpleMultiAgentGroups[throwInfo.team].AddGroupReward(1f + timeBonusScalar - ( timeBonusScalar * ( (float)resetEnvStepsCounter / (float)maxEnvSteps ) ));
                 _simpleMultiAgentGroups[teamId].AddGroupReward(-1f);
@@ -363,6 +353,7 @@ public class BeachVolkerballCupController : MonoBehaviour
         else
         {
             Debug.Log($"ENV [{envNumber}] Team {throwInfo.team} hit team {teamId} too close at {distance} m.");
+            
             _agentInfos[throwInfo.team][throwInfo.player].agent.AddReward(-0.0001f);
             //_simpleMultiAgentGroups[throwInfo.team].AddGroupReward(-0.00001f);
         }
@@ -371,12 +362,14 @@ public class BeachVolkerballCupController : MonoBehaviour
     public void HitByTeamPlayer(int teamId, int playerId)
     {
         Debug.Log($"ENV [{envNumber}] Team {teamId}, player {playerId} hit by own team.");
+        
         _simpleMultiAgentGroups[teamId].AddGroupReward(-1f);
     }
 
     public void HitBarrier()
     {
         Debug.Log($"ENV [{envNumber}] Team {throwInfo.team}, player {throwInfo.player} hit barrier.");
+        
         _agentInfos[throwInfo.team][throwInfo.player].agent.AddReward(-0.01f);
     }
     

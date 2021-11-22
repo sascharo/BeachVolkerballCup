@@ -20,14 +20,6 @@ public class BeachVolkerballCupAgent : Agent
     private Vector3 _restPos;
     //private Quaternion _restRot;
 
-    //[Header("OBSERVATIONS")]
-    //[SerializeField]
-    //private Transform ball;
-    //public bool hasBall = false;
-    //public bool gotHit = false;
-    //private Vector3 _prePos;
-    //private Vector3 _velocity;
-    
     [Header("OBSERVATIONS")]
     [HideInInspector]
     public BeachVolkerballCupAgentInput input;
@@ -59,7 +51,7 @@ public class BeachVolkerballCupAgent : Agent
     [Header("DEBUG")]
     private Renderer _renderer;
     private Material _materialBodyDefault;
-    public Material materialBodyCarry;
+    //public Material materialBodyCarry;
 
     void Awake()
     {
@@ -70,9 +62,10 @@ public class BeachVolkerballCupAgent : Agent
     void Update()
     {
         if (_initialized) return;
-        
         Debug.LogWarning($"PLAYER [{_behaviorParameters.TeamId}][{playerId}] NOT INITIALIZED!");
         Initialize();
+        
+        //if (_initializedByController) return;
     }
     
     public override void Initialize()
@@ -83,16 +76,13 @@ public class BeachVolkerballCupAgent : Agent
         
         var pos = transform.localPosition;
         _restPos = pos;
-        //_restRot = tr.localRotation;
 
         input = GetComponent<BeachVolkerballCupAgentInput>();
         _move = GetComponent<BeachVolkerballCupAgentMove>();
 
         colliderFront = transform.Find("ColliderFront").GetComponent<CapsuleCollider>();
-        //colliderBody = transform.Find("Body").GetComponent<SphereCollider>();
         colliderShieldGo = transform.Find("ColliderShield").gameObject;
         _rigidBody = GetComponent<Rigidbody>();
-        //_constraints = _rigidBody.constraints;
 
         if (projectileTransform == null)
         {
@@ -135,14 +125,11 @@ public class BeachVolkerballCupAgent : Agent
         var tr = transform;
         var pos = tr.localPosition;
         
-        //sensor.AddObservation(tr.localPosition);
         sensor.AddObservation(transform.InverseTransformVector(_rigidBody.velocity));
         
         var posBall = _controller.ball.gameObject.transform.localPosition;
         sensor.AddObservation(Vector3.Distance(pos, posBall));
-        //sensor.AddObservation(_controller.ball.gameObject.transform.InverseTransformVector(_controller.ball.rigidBody.velocity));
         sensor.AddObservation(_controller.ball.velocity);
-        //sensor.AddObservation(_controller.ball.rigidBody.velocity.magnitude);
         var angle = Vector3.SignedAngle(transform.forward, posBall - pos, Vector3.up) / 180f;
         if (_controller.carryInfo.team == _behaviorParameters.TeamId && _controller.carryInfo.player == playerId)
         {
@@ -150,8 +137,6 @@ public class BeachVolkerballCupAgent : Agent
         }
         sensor.AddObservation(angle);
         
-        /*if (_behaviorParameters.TeamId == 1 && playerId == 0)
-            Debug.Log($"GOTHIT = {gotHit}");*/
         sensor.AddObservation(gotHit);
         if (Math.Abs(gotHit - 1f) < TOLERANCE)
         {
@@ -193,18 +178,16 @@ public class BeachVolkerballCupAgent : Agent
     public void MoveAgent(ActionBuffers actionBuffers)
     {
         var continuousActions = actionBuffers.ContinuousActions;
-        //var discreteActions = actionBuffers.DiscreteActions;
-        
+
         _inputV = continuousActions[0];
         _inputH = continuousActions[1];
         _inputAxisX = continuousActions[2];
         _inputThrowStrength = continuousActions[3];
-        //_inputBoost = discreteActions[0];
-        
-        // Handle rotation.
+
+        // Rotation
         _move.Turn(_inputAxisX);
         
-        // Handle XZ movement.
+        // XZ movement
         var moveDir = transform.TransformDirection(new Vector3(_inputH, 0f, _inputV));
         _move.Run(moveDir);
         
@@ -239,15 +222,11 @@ public class BeachVolkerballCupAgent : Agent
 
             if (contact.thisCollider.CompareTag($"agentFront{_behaviorParameters.TeamId}"))
             {
-                //Debug.Log($"ENV [{_controller.envNumber}] Agent {playerId} of team {_behaviorParameters.TeamId} caught ball.");
                 colliderFront.isTrigger = true;
                 _controller.ball.colliderSphere.isTrigger = true;
                 colliderShieldGo.SetActive(true);
-                //hasBall = true;
                 _controller.CaughtBall(_behaviorParameters.TeamId, playerId);
-                //AddReward(1f);
                 _controller.ball.SetMaterialCarry();
-                //_renderer.material = materialBodyCarry;
             }
             else
             {
@@ -257,13 +236,11 @@ public class BeachVolkerballCupAgent : Agent
                 {
                     if (_controller.throwInfo.team != _behaviorParameters.TeamId)
                     {
-                        //Debug.Log($"ENV [{_controller.envNumber}] Agent {playerID} of team {_behaviorParameters.TeamId} hit by other team {_controller.throwInfo.team}.");
                         gotHit = 2f;
                         _controller.HitByOpponent(_behaviorParameters.TeamId, playerId);
                     }
                     else if (_controller.throwInfo.player != playerId)
                     {
-                        //Debug.Log($"ENV [{_controller.envNumber}] Agent {playerID} of team {_behaviorParameters.TeamId} hit by own team ({_controller.throwInfo.team}).");
                         gotHit = 1f;
                         _controller.HitByTeamPlayer(_behaviorParameters.TeamId, playerId);
                     }
@@ -278,11 +255,9 @@ public class BeachVolkerballCupAgent : Agent
 
     private void ThrowBall()
     {
-        //Debug.Log($"ENV [{_controller.envNumber}] Agent {playerId} of team {_behaviorParameters.TeamId} throws ball.");
         colliderFront.isTrigger = false;
         _controller.ball.colliderSphere.isTrigger = false;
         colliderShieldGo.SetActive(false);
-        //hasBall = false;
         _controller.ThrowBall(transform, projectileTransform, _inputThrowStrength);
         _controller.ball.SetMaterialThrow();
         _renderer.material = _materialBodyDefault;

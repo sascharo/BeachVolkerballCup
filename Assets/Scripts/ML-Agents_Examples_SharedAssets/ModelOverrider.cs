@@ -312,8 +312,7 @@ public class ModelOverrider : MonoBehaviour
         asset.modelData = assetData;
         return asset;
     }
-
-
+    
     /// <summary>
     /// Load the NNModel file from the specified path, and give it to the attached agent.
     /// </summary>
@@ -370,6 +369,5 @@ public class ModelOverrider : MonoBehaviour
             EditorApplication.isPlaying = false;
 #endif
         }
-
     }
 }

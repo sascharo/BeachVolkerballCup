@@ -10,7 +10,7 @@ public class BeachVolkerballCupAgentMove : MonoBehaviour
     public ForceMode runningForceMode = ForceMode.Impulse;
     [Header("ROTATING")]
     [Range(1f, 10f)]
-    public float agentSensitivity = 3f; // 2f
+    public float agentSensitivity = 3f;
     [Range(0f, 1f)]
     public float agentSmoothTime = 0.05f;
     [Header("RIGIDBODY")]

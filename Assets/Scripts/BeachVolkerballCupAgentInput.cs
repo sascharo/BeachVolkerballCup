@@ -10,8 +10,7 @@ public class BeachVolkerballCupAgentInput : MonoBehaviour
     public Vector2 moveInput;
     public float rotateInput;
     public float throwBall;
-    //public bool boostPressed;
-    
+
     void Awake()
     {
         _inputActions = new BeachVolkerballCupInputActions();
@@ -23,7 +22,7 @@ public class BeachVolkerballCupAgentInput : MonoBehaviour
         _inputActions.Enable();
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
         _inputActions.Disable();
     }
@@ -47,10 +46,5 @@ public class BeachVolkerballCupAgentInput : MonoBehaviour
         moveInput = _actionMap.Run.ReadValue<Vector2>();
         rotateInput = _actionMap.Turn.ReadValue<float>();
         throwBall = _actionMap.Throw.ReadValue<float>();
-
-        //if (_actionMap.Dash.triggered)
-        //{
-        //    dashPressed = true;
-        //}
     }
 }

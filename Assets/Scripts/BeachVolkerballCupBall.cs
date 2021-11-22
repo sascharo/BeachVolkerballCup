@@ -7,8 +7,6 @@ public class BeachVolkerballCupBall : MonoBehaviour
     private BeachVolkerballCupController _controller;
     
     private Vector3 _restPos;
-    //private Quaternion _restRot;
-    //private Vector3 _posDelta;
     [Header("OBSERVATIONS")]
     private Vector3 _prePos;
     public Vector3 velocity;
@@ -24,7 +22,7 @@ public class BeachVolkerballCupBall : MonoBehaviour
     public Vector2 initialAngularVelocityStrength = new Vector2(1f, 2.5f);
     public float timer = 0f;
     //[HideInInspector]
-    public bool inactive = false;
+    //public bool inactive = false;
 
     [Header("DEBUG")]
     public Material materialCarry;
@@ -57,14 +55,12 @@ public class BeachVolkerballCupBall : MonoBehaviour
         }
         if (timer > _controller.ballInactiveTimeoutInSec && _controller.carryInfo.team <= -1)
         {
-            //Debug.Log($"ENV [{_controller.envNumber}] Ball inactive for too long.");
-            inactive = true;
+            //inactive = true;
             _controller.BallInactive();
         }
         if (timer > _controller.ballCarryTimeoutInSec && _controller.carryInfo.team > -1)
         {
-            //Debug.Log($"ENV [{_controller.envNumber}] Team {_controller.carryInfo.team}, Player {_controller.carryInfo.player} holding ball too long.");
-            inactive = true;
+            //inactive = true;
             _controller.BallCarriedTooLong();
         }
         
@@ -72,8 +68,6 @@ public class BeachVolkerballCupBall : MonoBehaviour
         {
             _controller.throwInfo.Reset();
         }
-
-        //_prePos = transform.localPosition;
     }
 
     void FixedUpdate()
@@ -86,7 +80,6 @@ public class BeachVolkerballCupBall : MonoBehaviour
     private void SetRestPosition(Transform tr)
     {
         _restPos = tr.localPosition;
-        //_restRot = tr.localRotation;
     }
     
     public void Reset()
@@ -105,23 +98,17 @@ public class BeachVolkerballCupBall : MonoBehaviour
     
     public void InitRb()
     {
-        inactive = false;
+        //inactive = false;
         timer = 0f;
-
-        //rigidBody.velocity = Vector3.zero;
+        
         rigidBody.velocity = Random.Range(initialVelocityStrength.x, initialVelocityStrength.y) * Random.onUnitSphere;
-        //rigidBody.angularVelocity = Vector3.zero;
         rigidBody.angularVelocity = Random.Range(initialAngularVelocityStrength.x, initialAngularVelocityStrength.y) * Random.onUnitSphere;
-        //rigidBody.AddForce(projectileTransform.forward * projectileForce, projectileForceMode);
         Activate();
     }
 
     public void Hold(Transform playerTransform)
     {
         rigidBody.isKinematic = true;
-        //var tr = transform;
-        //_posDelta = tr.localPosition - playerTransform.localPosition;
-        //isHeld = true;
     }
     
     public void RotateAroundPlayer(Transform playerTransform, float angleY)
@@ -134,7 +121,7 @@ public class BeachVolkerballCupBall : MonoBehaviour
         transform.localPosition += delta;
     }
 
-    public void Activate()
+    private void Activate()
     {
         rigidBody.isKinematic = false;
     }
@@ -151,10 +138,7 @@ public class BeachVolkerballCupBall : MonoBehaviour
         if ((collision.gameObject.CompareTag("barrier")) || 
             (collision.gameObject.CompareTag("floor") && Time.time - _controller.throwInfo.timeStamp >= _controller.ballThrowTimeoutInSec))
         {
-            //Debug.Log(ENV [{_controller.envNumber}] Time.time);
             _controller.throwInfo.Reset();
-                
-            //_controller.ball.SetMaterialDefault();
         }
     }
 
