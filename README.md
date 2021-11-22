@@ -21,11 +21,11 @@
           "*$ee..  ╬  ..ze$P"
               ""*******""
 ```
-Built with ***Unity*** **2021.2.3f1**.
+The ***Unity*** version used is **2021.2.3f1**.
 
 The agent's heuristic function / human player is only implemented for and tested with the ***Xbox controller*** at this stage, there is no keyboard support.
 
-The config file for MA-POCA training can be found in "**.\\CONFIG\\MA-POCA\\BeachVolkerballCup.yaml**". The config has to be read from "**ml-agents\\config\\poca\\**" to able to train with team-play active, otherwise it will be off.<br>```[your ml-agents repo]\config\poca\BeachVolkerballCup.yaml' --run-id=BeachVolkerballCup```
+The config file for MA-POCA training can be found in "**.\\CONFIG\\MA-POCA\\BeachVolkerballCup.yaml**". The .yaml config has to be copied and read from "**\*your ml-agents repo\*\\config\\poca\\**" to able to train with team-play activated, otherwise it will be off.<br>```[your ml-agents repo]\config\poca\BeachVolkerballCup.yaml' --run-id=BeachVolkerballCup```
 
 <details><summary>Links</summary>
 <p>
