@@ -1,3 +1,10 @@
+/// <summary>
+/// From Unity.MLAgentsExamples 
+/// [https://github.com/Unity-Technologies/ml-agents/blob/main/Project/Assets/ML-Agents/Examples/SharedAssets/Scripts/ModelOverrider.cs].
+/// </summary>
+/// <param name="ModelOverrider"></param>
+/// <returns></returns>
+
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,7 +51,6 @@ public class ModelOverrider : MonoBehaviour
 
     // Cached loaded NNModels, with the behavior name as the key.
     Dictionary<string, NNModel> m_CachedModels = new Dictionary<string, NNModel>();
-
 
     // Max episodes to run. Only used if > 0
     // Will default to 1 if override models are specified, otherwise 0.
