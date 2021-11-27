@@ -21,9 +21,11 @@
           "*$ee..  ╬  ..ze$P"
               ""*******""
 ```
-Requires at least
+Requires 
 - [ ] Unity **2021.2.3f1**,
-- [ ] **com.unity.ml-agents_2.0.1**.
+- [ ] **com.unity.ml-agents_2.0.1**,
+
+or later.
 
 The agent's heuristic function / human player is only implemented for and tested with the ***Xbox controller*** at this stage, there is no keyboard support.
 
