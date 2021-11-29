@@ -22,8 +22,8 @@
               ""*******""
 ```
 Requires 
-- [ ] Unity **2021.2.3f1**,
-- [ ] **com.unity.ml-agents_2.0.1**,
+- [ ] Unity **2021.2.4f1**,
+- [ ] **com.unity.ml-agents_2.0.1** *(17d7dc9e8225b676cec9bb652b54d4ac55e96972)*,
 
 or later.
 
